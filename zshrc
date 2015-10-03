@@ -52,7 +52,7 @@ export TERM="xterm-256color"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git ruby bundler osx rake rails)
+plugins=(z git ruby bundler osx rake rails)
 
 # User configuration
 
