@@ -1,6 +1,9 @@
 # Path to your oh-my-zsh installation.
 export ZSH=/Users/cloudy/.oh-my-zsh
 
+# zsh-completion
+fpath=(/usr/local/share/zsh-completions $fpath)
+
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
@@ -10,12 +13,14 @@ ZSH_THEME="bullet-train"
 
 export TERM="xterm-256color"
 
+export EDITOR="vim"
+
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
 
 # Uncomment the following line to use hyphen-insensitive completion. Case
 # sensitive completion must be off. _ and - will be interchangeable.
-# HYPHEN_INSENSITIVE="true"
+HYPHEN_INSENSITIVE="true"
 
 # Uncomment the following line to disable bi-weekly auto-update checks.
 # DISABLE_AUTO_UPDATE="true"
@@ -56,13 +61,13 @@ plugins=(z git ruby bundler osx rake rails)
 
 # User configuration
 
-export PATH="/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin"
+export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/sbin:/usr/local/scala/bin"
 # export MANPATH="/usr/local/man:$MANPATH"
 
 source $ZSH/oh-my-zsh.sh
 
 # You may need to manually set your language environment
-# export LANG=en_US.UTF-8
+export LANG=en_US.UTF-8
 
 # Preferred editor for local and remote sessions
 # if [[ -n $SSH_CONNECTION ]]; then
@@ -85,3 +90,35 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+
+# rbenv init
+eval "$(rbenv init -)"
+
+# macvim open current folder
+alias mm='nvim .'
+# alias vi='mvim'
+alias gu='git up'
+alias cpp='cap production deploy'
+alias csp='cap staging deploy'
+alias cpl='cap production logs:tail\[production\]'
+alias csl='cap staging logs:tail\[staging\]'
+alias dmm='eval "$(docker-machine env default)"'
+alias gcpp='gu;gp;cpp'
+alias vi='/usr/local/Cellar/vim/7.4.898/bin/vim'
+alias vim='vi'
+alias nv='nvim'
+alias sml='/usr/local/smlnj/bin/sml'
+alias tks='tmux kill-session -t'
+alias tls='tmux ls'
+
+ms() {
+  tmuxinator start rails projects_root=~/coding/geekpark/ name="$1"
+}
+
+# docker
+eval "$(docker-machine env dev)"
+
+alias dev='docker-compose run web'
+
+# gnpm
+alias gnpm='npm --registry=http://npm.geekpark.net  --cache=/Users/cloudy/.npm/.cache/gnpm --userconfig=/Users/cloudy/.gnpmrc'
