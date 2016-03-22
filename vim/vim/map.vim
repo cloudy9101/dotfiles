@@ -21,7 +21,8 @@ nmap ;k <Plug>GitGutterPrevHunk
 " map for ctrlP and ctrl shift f and ctrl b
 " nnoremap <C-p> :<C-u>Unite -start-insert -prompt-direction=top file_rec/async<CR>
 " nnoremap <C-b> :<C-u>Unite -start-insert -prompt-direction=top buffer<CR>
-nnoremap <D-F> :<C-u>Unite -start-insert -prompt-direction=top grep:.<CR>
+" nnoremap <D-F> :<C-u>Unite -start-insert -prompt-direction=top grep:.<CR>
+nmap <C-F> <Plug>CtrlSFPrompt
 
 " switch tab
 nnoremap <TAB><TAB> :tabnext<CR>
@@ -36,3 +37,8 @@ nnoremap <C-b> :CtrlPMixed<CR>
 " markdown preview
 nnoremap <leader>p :MarkdownPreview<CR>
 nnoremap <leader>sp :MarkdownPreviewStop<CR>
+
+" fix iterm bug which get <C-W>h can't work
+if has('nvim')
+  nmap <BS> <C-W>h
+endif

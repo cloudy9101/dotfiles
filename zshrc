@@ -15,6 +15,8 @@ export TERM="xterm-256color"
 
 export EDITOR="vim"
 
+export TERMINAL_NOTIFIER_BIN=/usr/local/bin/terminal-notifier
+
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
 
@@ -61,7 +63,7 @@ plugins=(z git ruby bundler osx rake rails)
 
 # User configuration
 
-export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/sbin:/usr/local/scala/bin"
+export PATH="./:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/sbin:/usr/local/scala/bin"
 # export MANPATH="/usr/local/man:$MANPATH"
 
 source $ZSH/oh-my-zsh.sh
@@ -110,6 +112,7 @@ alias nv='nvim'
 alias sml='/usr/local/smlnj/bin/sml'
 alias tks='tmux kill-session -t'
 alias tls='tmux ls'
+alias tas='tmux attach -t'
 
 ms() {
   tmuxinator start rails projects_root=~/coding/geekpark/ name="$1"

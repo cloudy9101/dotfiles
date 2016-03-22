@@ -1,8 +1,4 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =6
-let g:netrw_dirhist_1='/Users/cloudy/coding/geekpark/gpk_main'
-let g:netrw_dirhist_2='/Users/cloudy/coding/geekpark/gpk_main/app'
-let g:netrw_dirhist_3='/Users/cloudy/coding/geekpark/gpk_main/app/wechat'
-let g:netrw_dirhist_4='/Users/cloudy/coding/geekpark/gpk_account'
-let g:netrw_dirhist_5='/Users/cloudy/coding/geekpark/gpk_account/app'
-let g:netrw_dirhist_6='/Users/cloudy/coding/geekpark/gpk_account'
+let g:netrw_dirhist_cnt =2
+let g:netrw_dirhist_1='/Users/cloudy/coding/tools/qmk_firmware/keyboard/ergodox_ez/keymaps/cloudy9101_erez_osx'
+let g:netrw_dirhist_2='/Users/cloudy'
