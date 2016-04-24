@@ -113,6 +113,7 @@ alias sml='/usr/local/smlnj/bin/sml'
 alias tks='tmux kill-session -t'
 alias tls='tmux ls'
 alias tas='tmux attach -t'
+pr () { /usr/local/bin/hub pull-request -h cloudy9101:$1  }
 
 ms() {
   tmuxinator start rails projects_root=~/coding/geekpark/ name="$1"

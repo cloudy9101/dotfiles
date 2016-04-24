@@ -42,3 +42,8 @@ nnoremap <leader>sp :MarkdownPreviewStop<CR>
 if has('nvim')
   nmap <BS> <C-W>h
 endif
+
+"剪贴模式
+nnoremap <F2> :set invpaste paste?<CR>
+imap <F2> <C-O>:set invpaste paste?<CR>
+set pastetoggle=<F2>
