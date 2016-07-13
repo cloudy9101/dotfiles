@@ -24,6 +24,7 @@ nmap <silent><leader>d <Plug>DashSearch
 " C-T C-X C-V open file or buffer in new tab, split, vertical split
 nnoremap <C-p> :Files<CR>
 nnoremap <C-b> :Buffers<CR>
+nnoremap <C-m> :BTags<CR>
 
 " CtrlSF with fzf and ag
 noremap <C-F> :Ag
