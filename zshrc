@@ -1,21 +1,12 @@
 # Path to your oh-my-zsh installation.
 export ZSH=/Users/cloudy/.oh-my-zsh
 
-# zsh-completion
-fpath=(/usr/local/share/zsh-completions $fpath)
-
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
 # ZSH_THEME="robbyrussell"
 ZSH_THEME="bullet-train"
-
-export TERM="xterm-256color"
-
-export EDITOR="vim"
-
-export TERMINAL_NOTIFIER_BIN=/usr/local/bin/terminal-notifier
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -59,12 +50,15 @@ HYPHEN_INSENSITIVE="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(z git ruby bundler osx rake rails)
+plugins=(z git ruby bundler osx rake rails zsh-autosuggestions)
 
 # User configuration
 
-export PATH="./:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/sbin:/usr/local/scala/bin"
-# export MANPATH="/usr/local/man:$MANPATH"
+export PATH="./:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/sbin"
+
+export TERM="xterm-256color"
+
+export TERMINAL_NOTIFIER_BIN=/usr/local/bin/terminal-notifier
 
 source $ZSH/oh-my-zsh.sh
 
@@ -72,11 +66,11 @@ source $ZSH/oh-my-zsh.sh
 export LANG=en_US.UTF-8
 
 # Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='mvim'
-# fi
+if [[ -n $SSH_CONNECTION ]]; then
+  export EDITOR='vim'
+else
+  export EDITOR="NVIM_TUI_ENABLE_TRUE_COLOR=1 nvim"
+fi
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
@@ -93,35 +87,39 @@ export LANG=en_US.UTF-8
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-# rbenv init
-eval "$(rbenv init -)"
-
-# macvim open current folder
-alias mm='nvim .'
-# alias vi='mvim'
+## neovim open current folder
+alias vi='NVIM_TUI_ENABLE_TRUE_COLOR=1 nvim'
+## git up
 alias gu='git up'
+## capistrano
 alias cpp='cap production deploy'
-alias csp='cap staging deploy'
 alias cpl='cap production logs:tail\[production\]'
-alias csl='cap staging logs:tail\[staging\]'
-alias dmm='eval "$(docker-machine env default)"'
 alias gcpp='gu;gp;cpp'
-alias vi='/usr/local/Cellar/vim/7.4.898/bin/vim'
-alias vim='vi'
-alias nv='nvim'
-alias sml='/usr/local/smlnj/bin/sml'
+## tmux
 alias tks='tmux kill-session -t'
 alias tls='tmux ls'
 alias tas='tmux attach -t'
+## hub
+alias pr='hub pull-request'
+## tmuxinator quick start
+ms() { tmuxinator start rails projects_root=~/coding/geekpark/ name="$1" }
+ts() { tmuxinator start normal }
+# alias end
 
-ms() {
-  tmuxinator start rails projects_root=~/coding/geekpark/ name="$1"
-}
-
-# docker
-eval "$(docker-machine env dev)"
-
-alias dev='docker-compose run web'
+# rbenv init
+eval "$(rbenv init -)"
 
 # gnpm
 alias gnpm='npm --registry=http://npm.geekpark.net  --cache=/Users/cloudy/.npm/.cache/gnpm --userconfig=/Users/cloudy/.gnpmrc'
+
+# fzf settings
+if [ -f ~/.fzf.zsh ]; then
+  export FZF_DEFAULT_OPTS="-x"
+  export FZF_DEFAULT_COMMAND="ag -l -g ''"
+  export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+  [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+fi
+
+# nvm setup
+export NVM_DIR="$HOME/.nvm"
+. "$(brew --prefix nvm)/nvm.sh"

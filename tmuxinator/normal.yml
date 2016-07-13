@@ -1,7 +1,7 @@
-# ~/.tmuxinator/gpk_account.yml
+# ~/.tmuxinator/normal.yml
 
-name: <%= @settings["name"] %>
-root: <%= @settings["projects_root"] + @settings["name"] %>
+name: normal
+root: ~/coding/
 
 # Optional tmux socket
 # socket_name: foo
@@ -28,11 +28,8 @@ root: <%= @settings["projects_root"] + @settings["name"] %>
 # post: tmux -CC attach -t rails
 
 windows:
-  - editor:
+  - editor: 
       layout: 32e1,234x54,0,0{140x54,0,0,0,93x54,141,0,4}
       panes:
-        - mm
-        - guard
-  - console: bundle exec rails c
-  - server: bundle exec rails s
-  - webpack: cd webpack && npm start
+        - 
+        - 
