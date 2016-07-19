@@ -31,8 +31,9 @@ windows:
   - editor:
       layout: 32e1,234x54,0,0{140x54,0,0,0,93x54,141,0,4}
       panes:
-        - mm
+        - vi .
         - guard
+  - blank:
   - console: bundle exec rails c
   - server: bundle exec rails s
   - webpack: cd webpack && npm start

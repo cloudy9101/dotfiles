@@ -103,7 +103,7 @@ alias tas='tmux attach -t'
 alias pr='hub pull-request'
 ## tmuxinator quick start
 ms() { tmuxinator start rails projects_root=~/coding/geekpark/ name="$1" }
-ts() { tmuxinator start normal }
+ts() { tmuxinator start normal projects_root="$1"}
 # alias end
 
 # rbenv init

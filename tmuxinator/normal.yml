@@ -1,7 +1,7 @@
 # ~/.tmuxinator/normal.yml
 
 name: normal
-root: ~/coding/
+root: <%= @settings["projects_root"] %>
 
 # Optional tmux socket
 # socket_name: foo
@@ -28,8 +28,8 @@ root: ~/coding/
 # post: tmux -CC attach -t rails
 
 windows:
-  - editor: 
+  - editor:
       layout: 32e1,234x54,0,0{140x54,0,0,0,93x54,141,0,4}
       panes:
-        - 
-        - 
+        - vi .
+        -
