@@ -10,30 +10,21 @@ call vundle#begin()
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
 
-function! DoRemote(arg)
-  UpdateRemotePlugins
-endfunction
+Plugin 'colors/onedark.vim'
 
 " Put the plugins here
 Plugin 'mattn/emmet-vim' " Emmet snippet for html
-Plugin 'Shougo/deoplete.nvim', { 'do': function('DoRemote') } " Auto Complete
 Plugin 'ddollar/nerdcommenter' " Smart code comment
-Plugin 'tpope/vim-fugitive' " Gstatus... git cli in vim
-Plugin 'bling/vim-airline' " Powerful status bar
+Plugin 'tpope/vim-fugitive' " Gblame etc
 Plugin 'airblade/vim-gitgutter' " Show file changes with git ~ + -
-Plugin 'Shougo/vimproc.vim' " Run cli in vim
 Plugin 'tpope/vim-endwise' " Smart auto end
 Plugin 'jiangmiao/auto-pairs' " Smart ()[]{}...
-Plugin 'rizzatti/dash.vim' " Open dash
 Plugin 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all'  } " Fzf a fuzzy finder
 Plugin 'junegunn/fzf.vim' " Integrate fzf with vim
-
-" snippets
-Plugin 'Shougo/neosnippet'
-Plugin 'Shougo/neosnippet-snippets'
-
-" syntastic
-Plugin 'scrooloose/syntastic'
+Plugin 'itchyny/lightline.vim'
+Plugin 'editorconfig/editorconfig-vim'
+Plugin 'w0rp/ale'
+Plugin 'neoclide/coc.nvim', {'do': './install.sh nightly'}
 
 " programming lang support
 Plugin 'elixir-lang/vim-elixir'
@@ -62,39 +53,43 @@ filetype plugin indent on    " required
 """ Emmet
 let g:user_emmet_install_global = 0
 autocmd FileType html,css,slim,erb,javascript EmmetInstall
-
-""" Deocomplete
-let g:deoplete#enable_at_startup = 1
+let g:user_emmet_leader_key=','
 
 """ NerdCommenter
-let g:NERDSpaceDelims = 1
+let g:NERDSpaceDelims = 0
 let g:NERDDefaultAlign = 'left'
 
-""" Airline
-let g:airline_powerline_fonts = 1
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#show_buffers = 0
-function! AirlineInit()
-  let g:airline_section_a = airline#section#create(['mode', ' ', 'branch'])
-  let g:airline_section_b = airline#section#create_left(['ffenc', 'hunks', '%f'])
-  let g:airline_section_c = airline#section#create(['filetype'])
-  let g:airline_section_x = airline#section#create(['%P'])
-  let g:airline_section_y = airline#section#create(['%B'])
-  let g:airline_section_z = airline#section#create_right(['%l', '%c', '%L'])
+""" Lightline
+set laststatus=2
+set noshowmode
+let g:lightline = {
+      \ 'colorscheme': 'one',
+      \ 'active': {
+      \   'left': [ [ 'mode', 'paste' ],
+      \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
+      \ },
+      \ 'component_function': {
+      \   'gitbranch': 'fugitive#head'
+      \ },
+      \ }
+
+""" EditorConfig
+let g:EditorConfig_exclude_patterns = ['fugitive://.*', 'scp://.*']
+
+""" ale
+let g:ale_linters = {
+\   'ruby': ['solargraph', 'rubocop'],
+\   'javascript': ['eslint'],
+\}
+
+""" Coc
+" use <tab> for trigger completion and navigate to the next complete item
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~ '\s'
 endfunction
-autocmd VimEnter * call AirlineInit()
 
-""" Neosnippet
-imap <C-k> <Plug>(neosnippet_expand_or_jump)
-smap <C-k> <Plug>(neosnippet_expand_or_jump)
-xmap <C-k> <Plug>(neosnippet_expand_or_jump)
-
-""" Syntastic
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 0
-let g:syntastic_check_on_wq = 1
-let g:jsx_ext_required = 0 " Allow JSX in normal JS files
-""""""" Syntastic checkers
-let g:syntastic_javascript_checkers = ["eslint"]
-let g:syntastic_ruby_checkers = ["rubocop"]
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
