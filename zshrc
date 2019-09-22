@@ -7,6 +7,25 @@ export ZSH=/Users/cloudy/.oh-my-zsh
 # time that oh-my-zsh is loaded.
 # ZSH_THEME="robbyrussell"
 ZSH_THEME="bullet-train"
+BULLETTRAIN_PROMPT_ORDER=(
+  time
+  status
+  ruby
+  dir
+  git
+  cmd_exec_time
+)
+BULLETTRAIN_PROMPT_CHAR=⚡️
+BULLETTRAIN_DIR_FG=black
+BULLETTRAIN_DIR_EXTENDED=2
+BULLETTRAIN_RUBY_BG="red"
+BULLETTRAIN_RUBY_FG="black"
+BULLETTRAIN_RUBY_PREFIX="💎"
+BULLETTRAIN_GIT_DIRTY=" %F{red}✘ %F{black}"
+BULLETTRAIN_GIT_ADDED="%F{black}✚%F{black}"
+BULLETTRAIN_GIT_MODIFIED="%F{black}✹%F{black}"
+BULLETTRAIN_GIT_DELETED="%F{black}✖%F{black}"
+BULLETTRAIN_GIT_UNTRACKED="%F{black}✭%F{black}"
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -50,7 +69,7 @@ HYPHEN_INSENSITIVE="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(z git ruby bundler osx rake rails zsh-autosuggestions)
+plugins=(z git ruby bundler osx rake zsh-autosuggestions)
 
 # User configuration
 
@@ -66,11 +85,7 @@ source $ZSH/oh-my-zsh.sh
 export LANG=en_US.UTF-8
 
 # Preferred editor for local and remote sessions
-if [[ -n $SSH_CONNECTION ]]; then
-  export EDITOR='vim'
-else
-  export EDITOR="NVIM_TUI_ENABLE_TRUE_COLOR=1 nvim"
-fi
+export EDITOR='vim'
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
@@ -87,8 +102,6 @@ fi
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-## neovim open current folder
-alias vi='NVIM_TUI_ENABLE_TRUE_COLOR=1 nvim'
 ## git up
 alias gu='git up'
 ## capistrano
@@ -99,18 +112,10 @@ alias gcpp='gu;gp;cpp'
 alias tks='tmux kill-session -t'
 alias tls='tmux ls'
 alias tas='tmux attach -t'
-## hub
-alias pr='hub pull-request'
-## tmuxinator quick start
-ms() { tmuxinator start rails projects_root=~/coding/geekpark/ name="$1" }
-ts() { tmuxinator start normal projects_root="$1"}
 # alias end
 
 # rbenv init
 eval "$(rbenv init -)"
-
-# gnpm
-alias gnpm='npm --registry=http://npm.geekpark.net  --cache=/Users/cloudy/.npm/.cache/gnpm --userconfig=/Users/cloudy/.gnpmrc'
 
 # fzf settings
 if [ -f ~/.fzf.zsh ]; then
@@ -119,7 +124,3 @@ if [ -f ~/.fzf.zsh ]; then
   export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
   [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 fi
-
-# nvm setup
-export NVM_DIR="$HOME/.nvm"
-. "$(brew --prefix nvm)/nvm.sh"
