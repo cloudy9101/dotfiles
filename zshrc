@@ -7,6 +7,7 @@ export ZSH=/Users/cloudy/.oh-my-zsh
 # time that oh-my-zsh is loaded.
 # ZSH_THEME="robbyrussell"
 ZSH_THEME="bullet-train"
+### Theme custom settings begin
 BULLETTRAIN_PROMPT_ORDER=(
   time
   status
@@ -26,6 +27,7 @@ BULLETTRAIN_GIT_ADDED="%F{black}✚%F{black}"
 BULLETTRAIN_GIT_MODIFIED="%F{black}✹%F{black}"
 BULLETTRAIN_GIT_DELETED="%F{black}✖%F{black}"
 BULLETTRAIN_GIT_UNTRACKED="%F{black}✭%F{black}"
+### Theme custom settings end
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -69,7 +71,7 @@ HYPHEN_INSENSITIVE="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(z git ruby bundler osx rake zsh-autosuggestions)
+plugins=(z git ruby bundler osx rake zsh-autosuggestions jsontools)
 
 # User configuration
 
@@ -124,3 +126,22 @@ if [ -f ~/.fzf.zsh ]; then
   export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
   [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 fi
+
+export ANDROID_HOME=/Users/cloudy/Library/Android/sdk
+export PATH=$ANDROID_HOME/platform-tools:$PATH
+export PATH=$ANDROID_HOME/tools:$PATH
+
+# Golang path
+export PATH=/usr/local/go/bin:$PATH
+export GOPATH=$HOME/Projects/gopath
+
+# Kubectl
+source <(kubectl completion zsh)
+echo 'alias k=kubectl' >>~/.zshrc
+echo 'complete -F __start_kubectl k' >>~/.zshrc
+alias k=kubectl
+complete -F __start_kubectl k
+alias k=kubectl
+complete -F __start_kubectl k
+alias k=kubectl
+complete -F __start_kubectl k

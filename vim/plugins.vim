@@ -30,6 +30,7 @@ Plug 'kchmck/vim-coffee-script'
 Plug 'slim-template/vim-slim'
 Plug 'mxw/vim-jsx'
 Plug 'tpope/vim-rails'
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 
 " Initialize plugin system
 call plug#end()
