@@ -1,5 +1,5 @@
 # Path to your oh-my-zsh installation.
-export ZSH=/Users/cloudy/.oh-my-zsh
+export ZSH="${HOME}/.oh-my-zsh"
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
@@ -105,18 +105,17 @@ export EDITOR='vim'
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 ## git up
-alias gu='git up'
-## capistrano
-alias cpp='cap production deploy'
-alias cpl='cap production logs:tail\[production\]'
-alias gcpp='gu;gp;cpp'
+alias gu='git pull'
 ## tmux
 alias tks='tmux kill-session -t'
 alias tls='tmux ls'
 alias tas='tmux attach -t'
+## k8s
+alias k='kubectl'
 # alias end
 
 # rbenv init
+export PATH="$HOME/.rbenv/bin:$PATH"
 eval "$(rbenv init -)"
 
 # fzf settings
@@ -127,21 +126,14 @@ if [ -f ~/.fzf.zsh ]; then
   [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 fi
 
-export ANDROID_HOME=/Users/cloudy/Library/Android/sdk
-export PATH=$ANDROID_HOME/platform-tools:$PATH
-export PATH=$ANDROID_HOME/tools:$PATH
-
 # Golang path
 export PATH=/usr/local/go/bin:$PATH
-export GOPATH=$HOME/Projects/gopath
+export GOPATH=$HOME/Projects/gopathPATH=$PATH:/mnt/c/windows
 
-# Kubectl
-source <(kubectl completion zsh)
-echo 'alias k=kubectl' >>~/.zshrc
-echo 'complete -F __start_kubectl k' >>~/.zshrc
-alias k=kubectl
-complete -F __start_kubectl k
-alias k=kubectl
-complete -F __start_kubectl k
-alias k=kubectl
-complete -F __start_kubectl k
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# Windows wsl2
+export PATH="/mnt/c/Windows/:$PATH"
+export PATH="/mnt/c/Windows/System32/WindowsPowerShell/v1.0/:$PATH"
