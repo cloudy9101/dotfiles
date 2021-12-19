@@ -9,6 +9,7 @@ export ZSH="${HOME}/.oh-my-zsh"
 ZSH_THEME="bullet-train"
 ### Theme custom settings begin
 BULLETTRAIN_PROMPT_ORDER=(
+  context
   time
   status
   ruby
@@ -71,7 +72,7 @@ HYPHEN_INSENSITIVE="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(z git ruby bundler osx rake zsh-autosuggestions jsontools)
+plugins=(z git ruby bundler macos rake zsh-autosuggestions jsontools)
 
 # User configuration
 
@@ -106,6 +107,7 @@ export EDITOR='vim'
 
 ## git up
 alias gu='git pull'
+alias gcom='gco master'
 ## tmux
 alias tks='tmux kill-session -t'
 alias tls='tmux ls'
@@ -127,13 +129,21 @@ if [ -f ~/.fzf.zsh ]; then
 fi
 
 # Golang path
-export PATH=/usr/local/go/bin:$PATH
-export GOPATH=$HOME/Projects/gopathPATH=$PATH:/mnt/c/windows
+export PATH=/usr/local/go/bin:$HOME/Projects/gopath/bin:$PATH
+export GOPATH=$HOME/Projects/gopath
 
+# Tinygo path
+export PATH=$PATH:/usr/local/tinygo/bin
+
+# Node & nvm
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+export NODE_OPTIONS=--max-old-space-size=8192
 
-# Windows wsl2
-export PATH="/mnt/c/Windows/:$PATH"
-export PATH="/mnt/c/Windows/System32/WindowsPowerShell/v1.0/:$PATH"
+# Yarn bin
+export PATH="$HOME/.yarn/bin:$PATH"
+
+# Proxy
+export http_proxy=192.168.31.182:7890
+export https_proxy=192.168.31.182:7890
