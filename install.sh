@@ -1,16 +1,16 @@
 #!/bin/bash
 
-# This script creates symlinks from the home directory to any desired dotfiles in ~/.dotfiles
-############################
-
-########## Variables
+### Variables
 
 dir=`dirname $(realpath "$0")` # current dir
 echo "Current dir is $dir"
 bak_dir=$dir/bak-files
 echo $bak_dir
 
-##########
+### END Variables
+
+
+### Functions
 
 move_to_bak_dir()
 {
@@ -23,7 +23,11 @@ move_to_bak_dir()
   fi
 }
 
-# create dotfiles_old in homedir
+### END Functions
+
+### Prescript
+
+# create backup dir
 echo "Creating $bak_dir for backup of any existing dotfiles in ~"
 rm -rf $bak_dir
 mkdir -p $bak_dir
@@ -41,11 +45,19 @@ then
   mv $HOME/.oh-my-zsh $bak_dir/
 fi
 
-# Git
+### END Prescript
+
+###### Configurations
+
+### Git
+
 ln -s $dir/gitignore $HOME/.gitignore
 ln -s $dir/gitconfig $HOME/.gitconfig
 
-# Zsh
+### END Git
+
+### Zsh
+
 # Install ohmyzsh and plugins
 if [ -d $HOME/.oh-my-zsh ]; then
   sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
@@ -72,12 +84,18 @@ fi
 
 ln -s $dir/zshrc $HOME/.zshrc
 
-# Rbenv
+### END Zsh
+
+### rbenv
+
 if [ ! -n rbenv ]; then
   curl -fsSL https://github.com/rbenv/rbenv-installer/raw/HEAD/bin/rbenv-installer | zsh
 fi
 
-# Tmux
+### END rbenv
+
+### Tmux
+
 if [ ! -n $(which tmux) ]; then
   brew install -q tmux
 fi
@@ -93,7 +111,10 @@ git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 ln -s $dir/tmux.conf $HOME/.tmux.conf
 $HOME/.tmux/plugins/tpm/bin/install_plugins # install tpm plugins
 
-# Neovim
+### END Tmux
+
+### Neovim
+
 NVIM_PATH=$HOME/.config/nvim
 if [ ! -n $(which nvim) ]; then
   brew install -q neovim
@@ -110,3 +131,5 @@ fi
 ln -s $dir/kickstart.nvim/init.lua $NVIM_PATH/init.lua
 ln -s $dir/nvim/lua $NVIM_PATH/lua
 ln -s $dir/nvim/after $NVIM_PATH/after
+
+### END Neovim
