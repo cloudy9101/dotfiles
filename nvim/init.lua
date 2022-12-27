@@ -1,0 +1,1 @@
+/Users/ray/.dotfiles/kickstart.nvim/init.lua
