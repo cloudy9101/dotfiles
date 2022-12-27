@@ -59,7 +59,7 @@ ln -s $dir/gitconfig $HOME/.gitconfig
 ### Zsh
 
 # Install ohmyzsh and plugins
-if [ -d $HOME/.oh-my-zsh ]; then
+if [ ! -d $HOME/.oh-my-zsh ]; then
   sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
 fi
 
@@ -84,7 +84,8 @@ fi
 
 sed -i "" "73d" $dir/zshrc
 sed -i "" "73i\\
-ZSH_CUSTOM=$ZSH_CUSTOM" $dir/zshrc
+ZSH_CUSTOM=$ZSH_CUSTOM\\
+" $dir/zshrc
 
 ln -s $dir/zshrc $HOME/.zshrc
 
