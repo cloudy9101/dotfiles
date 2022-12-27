@@ -82,6 +82,10 @@ if [ ! -d $ZSH_CUSTOM/themes/powerlevel10k ]; then
   git clone --depth=1 https://github.com/romkatv/powerlevel10k.git $ZSH_CUSTOM/themes/powerlevel10k
 fi
 
+sed -i "" "73d" $dir/zshrc
+sed -i "" "73i\\
+ZSH_CUSTOM=$ZSH_CUSTOM" $dir/zshrc
+
 ln -s $dir/zshrc $HOME/.zshrc
 
 ### END Zsh
@@ -107,7 +111,9 @@ then
 fi
 
 mkdir -p $HOME/.tmux/plugins
-git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+if [ ! -d $HOME/.tmux/plugins/tpm ]; then
+  git clone https://github.com/tmux-plugins/tpm $HOME/.tmux/plugins/tpm
+fi
 ln -s $dir/tmux.conf $HOME/.tmux.conf
 $HOME/.tmux/plugins/tpm/bin/install_plugins # install tpm plugins
 
