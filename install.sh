@@ -130,13 +130,11 @@ if [ -d $NVIM_PATH ]
 then
   mv $NVIM_PATH $bak_dir/
 fi
-mkdir -p $NVIM_PATH
 
-if [ ! -d $dir/kickstart.nvim ]; then
-  git clone git@github.com:nvim-lua/kickstart.nvim.git $dir/kickstart.nvim
+if [ ! -n $(which rg) ]; then
+  brew install ripgrep
 fi
-ln -s $dir/kickstart.nvim/init.lua $NVIM_PATH/init.lua
-ln -s $dir/nvim/lua $NVIM_PATH/lua
-ln -s $dir/nvim/after $NVIM_PATH/after
+ln -s $dir/nvim $NVIM_PATH
 
 ### END Neovim
+
