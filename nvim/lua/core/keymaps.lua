@@ -20,6 +20,8 @@ keymap.set("n", "<leader>e", ":NvimTreeToggle<CR>") -- toggle file explorer
 
 -- telescope
 local ts_status, builtin = pcall(require, 'telescope.builtin')
+local scripts_status, scripts = pcall(require, 'core.custom-scripts')
+
 if ts_status then
   keymap.set('n', '<leader>ff', builtin.find_files, {})
   keymap.set('n', '<leader>fg', builtin.live_grep, {})
@@ -28,4 +30,8 @@ if ts_status then
   keymap.set('n', '<leader>fs', builtin.grep_string, {})
   keymap.set('n', '<leader>fi', builtin.builtin, {})
   keymap.set('n', '<leader>fd', builtin.diagnostics, {})
+
+  if scripts_status then
+    keymap.set('n', '<leader>f.', scripts.find_dotfiles, {})
+  end
 end

@@ -1,7 +1,6 @@
 # neovim
 alias vi="nvim"
-# hub
-alias git="hub"
+# git
 alias gu="git pull"
 alias ga="git add"
 alias gc="git commit"
