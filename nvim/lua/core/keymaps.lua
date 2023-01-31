@@ -16,7 +16,7 @@ keymap.set("n", "<leader>tp", ":tabp<CR>") --  go to previous tab
 keymap.set('n', '<Leader>m', "<Cmd>lua require('maximize').toggle()<CR>")
 
 -- nvim-tree
-keymap.set("n", "<leader>e", ":NvimTreeToggle<CR>") -- toggle file explorer
+keymap.set("n", "<leader>e", ":NvimTreeFindFileToggle<CR>") -- toggle file explorer
 
 -- telescope
 local ts_status, builtin = pcall(require, 'telescope.builtin')
@@ -30,8 +30,12 @@ if ts_status then
   keymap.set('n', '<leader>fs', builtin.grep_string, {})
   keymap.set('n', '<leader>fi', builtin.builtin, {})
   keymap.set('n', '<leader>fd', builtin.diagnostics, {})
+  keymap.set('n', '<leader>gb', builtin.git_branches, {})
+  keymap.set('n', '<leader>gs', builtin.git_status, {})
 
   if scripts_status then
     keymap.set('n', '<leader>f.', scripts.find_dotfiles, {})
+    keymap.set('n', '<leader>fp', scripts.find_projects, {})
   end
 end
+
