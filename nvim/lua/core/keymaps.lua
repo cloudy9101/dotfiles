@@ -23,13 +23,17 @@ local ts_status, builtin = pcall(require, 'telescope.builtin')
 local scripts_status, scripts = pcall(require, 'core.custom-scripts')
 
 if ts_status then
+  local diagnostics = function ()
+    builtin.diagnostics({layout_strategy='vertical',layout_config={width=0.5},wrap_results=true})
+  end
+
   keymap.set('n', '<leader>ff', builtin.find_files, {})
   keymap.set('n', '<leader>fg', builtin.live_grep, {})
   keymap.set('n', '<leader>fb', builtin.buffers, {})
   keymap.set('n', '<leader>fh', builtin.help_tags, {})
   keymap.set('n', '<leader>fs', builtin.grep_string, {})
   keymap.set('n', '<leader>fi', builtin.builtin, {})
-  keymap.set('n', '<leader>fd', builtin.diagnostics, {})
+  keymap.set('n', '<leader>fd', diagnostics, {})
   keymap.set('n', '<leader>gb', builtin.git_branches, {})
   keymap.set('n', '<leader>gs', builtin.git_status, {})
 
