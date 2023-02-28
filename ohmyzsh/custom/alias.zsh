@@ -14,3 +14,4 @@ alias main='gco "$(git symbolic-ref refs/remotes/origin/HEAD | cut -d'/' -f4)"'
 alias tls="tmux ls"
 alias tas="tmux attach -t"
 alias tns="tmux new-session -s"
+alias tks="tmux kill-session -t"
