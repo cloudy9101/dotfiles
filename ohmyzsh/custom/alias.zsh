@@ -15,3 +15,5 @@ alias tls="tmux ls"
 alias tas="tmux attach -t"
 alias tns="tmux new-session -s"
 alias tks="tmux kill-session -t"
+# k8s
+alias k="kubectl"
