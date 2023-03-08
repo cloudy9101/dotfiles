@@ -98,28 +98,8 @@ local M = {
   'neovim/nvim-lspconfig',
   dependencies = {
     -- Automatically install LSPs to stdpath for neovim
-    {
-      'williamboman/mason.nvim',
-      config = true,
-    },
-    {
-      'williamboman/mason-lspconfig.nvim',
-      config = function()
-        local lspconfig = require('mason-lspconfig')
-        lspconfig.setup({
-          ensure_installed = get_keys(servers),
-        })
-        lspconfig.setup_handlers {
-          function(server_name)
-            require('lspconfig')[server_name].setup {
-              on_attach = on_attach,
-              settings = servers[server_name],
-              capabilities = capabilities,
-            }
-          end,
-        }
-      end
-    },
+    'williamboman/mason.nvim',
+    'williamboman/mason-lspconfig.nvim',
 
     -- Useful status updates for LSP
     {
@@ -133,6 +113,22 @@ local M = {
       config = true,
     },
   },
+  config = function()
+    require('mason').setup()
+    local lspconfig = require('mason-lspconfig')
+    lspconfig.setup({
+      ensure_installed = get_keys(servers),
+    })
+    lspconfig.setup_handlers {
+      function(server_name)
+        require('lspconfig')[server_name].setup {
+          on_attach = on_attach,
+          settings = servers[server_name],
+          capabilities = capabilities,
+        }
+      end,
+    }
+  end
 }
 
 return M
