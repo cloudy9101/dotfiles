@@ -38,7 +38,12 @@ local servers = {
   solargraph = {},
   sqlls = {},
   tailwindcss = {},
-  tsserver = {},
+  tsserver = {
+    preferences = {
+      quotePreference = "double",
+      jsxAttributeCompletionStyle = "braces",
+    },
+  },
   vimls = {},
   yamlls = {},
 }
