@@ -1,9 +1,10 @@
 local M = {
   "L3MON4D3/LuaSnip",
+  lazy = false,
   dependencies = {
     "rafamadriz/friendly-snippets",
     config = function()
-      require("luasnip.loaders.from_vscode").lazy_load({ paths = "./lua/core/snippets" })
+      require("luasnip.loaders.from_vscode").lazy_load()
     end,
   },
   opts = {

@@ -1,7 +1,14 @@
 return {
-  'nvim-lua/plenary.nvim', -- lua functions used by many plugins
+  {
+    'nvim-lua/plenary.nvim',
+    lazy = true,
+  }, -- lua functions used by many plugins
   'christoomey/vim-tmux-navigator', -- tmux & vim navigator via ctl-j,k,h,l
-  'navarasu/onedark.nvim', -- theme
+  {
+    'navarasu/onedark.nvim',
+    lazy = false,
+    priority = 1000,
+  }, -- theme
   'tpope/vim-sleuth', -- Detect tabstop and shiftwidth automatically
   -- maximize vim window
   {
@@ -22,6 +29,6 @@ return {
   'tpope/vim-fugitive',
   {
     'lewis6991/gitsigns.nvim',
-    config = true,
+    event = { "BufReadPre", "BufNewFile" },
   },
 }

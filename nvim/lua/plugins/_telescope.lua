@@ -3,6 +3,7 @@ local M = {
   tag = '0.1.0',
   dependencies = {
     'nvim-telescope/telescope-symbols.nvim',
+    'pwntester/octo.nvim',
     {
       'nvim-telescope/telescope-fzf-native.nvim',
       build = 'make',
@@ -17,6 +18,7 @@ local M = {
   config = function()
     require('telescope').load_extension('fzf')
     require('telescope').load_extension('frecency')
+    require('octo').setup()
   end
 }
 
