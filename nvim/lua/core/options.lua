@@ -2,6 +2,7 @@ local opt = vim.opt -- for conciseness
 
 -- line numbers
 opt.number = true -- shows absolute line number on cursor line
+opt.relativenumber = true -- shows absolute line number on cursor line
 
 -- tabs & indentation
 opt.tabstop = 2 -- 2 spaces for tabs (prettier default)

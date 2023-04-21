@@ -4,3 +4,5 @@ ohmyzsh/custom/themes
 bak-files
 
 kickstart.nvim
+
+nvim/lazy-lock.json
