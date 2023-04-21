@@ -4,11 +4,13 @@ return {
     lazy = true,
   }, -- lua functions used by many plugins
   'christoomey/vim-tmux-navigator', -- tmux & vim navigator via ctl-j,k,h,l
+  -- theme
   {
     'navarasu/onedark.nvim',
     lazy = false,
     priority = 1000,
-  }, -- theme
+  },
+  -- END theme
   'tpope/vim-sleuth', -- Detect tabstop and shiftwidth automatically
   -- maximize vim window
   {

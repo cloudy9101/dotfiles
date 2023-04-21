@@ -3,22 +3,22 @@ local M = {
   tag = '0.1.0',
   dependencies = {
     'nvim-telescope/telescope-symbols.nvim',
-    'pwntester/octo.nvim',
+    'LukasPietzschmann/telescope-tabs',
     {
       'nvim-telescope/telescope-fzf-native.nvim',
       build = 'make',
     },
     {
-      'nvim-telescope/telescope-frecency.nvim',
-      dependencies = {
-        'kkharji/sqlite.lua',
-      },
+      "nvim-telescope/telescope-file-browser.nvim",
+      dependencies = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" }
     },
   },
   config = function()
     require('telescope').load_extension('fzf')
-    require('telescope').load_extension('frecency')
-    require('octo').setup()
+    require('telescope-tabs').setup({
+      close_tab_shortcut_i = 'C-dt',
+      close_tab_shortcut_n = 'dt',
+    })
   end
 }
 

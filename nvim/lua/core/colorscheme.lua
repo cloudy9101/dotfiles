@@ -4,6 +4,8 @@ if not status then
 end
 
 onedark.setup {
-  style = 'deep'
+  style = 'cool'
 }
-onedark.load()
+-- onedark.load()
+
+vim.cmd("colorscheme onedark")
