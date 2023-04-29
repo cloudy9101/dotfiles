@@ -1,64 +1,69 @@
 local keymap = vim.keymap -- for conciseness
+local cc_status, cc = pcall(require, 'command_center')
 
--- clear search highlights
-keymap.set("n", "<leader>nh", ":nohl<CR>")
+local keymap_set = function(mappings, cc_category)
+  local cc_cmds = {}
+  for _, mapping in ipairs(mappings) do
+    if not mapping.unavailable then
+      keymap.set(mapping.mode, mapping.keys, mapping.cmd, mapping.options)
+    end
+    -- Add to command center
+    if cc_status and mapping.add_to_cc then
+      table.insert(cc_cmds, {
+        desc = mapping.desc,
+        cmd = mapping.cmd,
+        keys = { mapping.mode, mapping.keys, mapping.options },
+        category = cc_category,
+      })
+    end
+  end
+  cc.add(cc_cmds, { mode = cc.mode.ADD })
+end
 
--- delete single character without copying into register
-keymap.set("n", "x", '"_x')
-
-keymap.set("i", "jj", '<ESC>', { noremap = true })
-
--- tab management
-keymap.set("n", "<leader>to", ":tabnew<CR>") -- open new tab
-keymap.set("n", "<leader>tx", ":tabclose<CR>") -- close current tab
-keymap.set("n", "<leader>tn", ":tabn<CR>") --  go to next tab
-keymap.set("n", "<leader>tp", ":tabp<CR>") --  go to previous tab
-
--- toggle window maximize
-keymap.set('n', '<Leader>m', "<Cmd>lua require('maximize').toggle()<CR>")
-
--- nvim-tree
-keymap.set("n", "<leader>e", ":NvimTreeFindFileToggle<CR>") -- toggle file explorer
-
--- folding
-keymap.set("n", "fo", "za")
+local mappings = {
+  { desc = 'Clear search highlights', cmd = ":nohl<CR>", keys = "<leader>nh", mode = "n", options = {}, },
+  -- delete single character without copying into register
+  { desc = '', cmd = '"_x', keys = "x", mode = "n", options = {}, },
+  { desc = 'Leave insert mode', cmd = '<ESC>', keys = "jj", mode = "i", options = { noremap = true }, },
+  { desc = 'Open new tab', cmd = ":tabnew<CR>", keys = "<leader>to", mode = "n", options = {}, add_to_cc = true, },
+  { desc = 'Close current tab', cmd = ":tabclose<CR>", keys = "<leader>tx", mode = "n", options = {}, },
+  { desc = 'Goto next tab', cmd = ":tabn<CR>", keys = "<leader>tn", mode = "n", options = {}, add_to_cc = true, },
+  { desc = 'Goto prev tab', cmd = ":tabp<CR>", keys = "<leader>tp", mode = "n", options = {}, add_to_cc = true, },
+  { desc = 'Toggle window maximize', cmd = "<Cmd>lua require('maximize').toggle()<CR>", keys = '<Leader>m', mode = 'n', options = {}, add_to_cc = true, },
+  -- { desc = 'Toggle files tree', cmd = ":NvimTreeFindFileToggle<CR>", keys = "<leader>e", mode = "n", options = {}, },
+  { desc = 'Toggle folding', cmd = "za", keys = "fo", mode = "n", options = {}, add_to_cc = true, },
+}
+keymap_set(mappings, 'Common')
 
 -- telescope
 local ts_status, builtin = pcall(require, 'telescope.builtin')
 local scripts_status, scripts = pcall(require, 'core.custom-scripts')
 local tabs_status, tabs = pcall(require, 'telescope-tabs')
 
-if ts_status then
-  local find_files = function ()
-    local opts = {}
-    vim.fn.system('git rev-parse --is-inside-work-tree')
-    if vim.v.shell_error == 0 then
-      require"telescope.builtin".git_files(opts)
-    else
-      require"telescope.builtin".find_files(opts)
-    end
-  end
-  local diagnostics = function ()
-    builtin.diagnostics({layout_strategy='vertical',layout_config={width=0.5},wrap_results=true})
-  end
-
-  keymap.set('n', '<leader><space>', find_files, {})
-  keymap.set('n', '<leader>fg', builtin.live_grep, {})
-  keymap.set('n', '<leader>fb', builtin.buffers, {})
-  keymap.set('n', '<leader>fh', builtin.help_tags, {})
-  keymap.set('n', '<leader>fs', builtin.grep_string, {})
-  keymap.set('n', '<leader>i', builtin.builtin, {})
-  keymap.set('n', '<leader>fd', diagnostics, {})
-  keymap.set('n', '<leader>gb', builtin.git_branches, {})
-  keymap.set('n', '<leader>gs', builtin.git_status, {})
-
-  if (tabs_status) then
-    keymap.set('n', '<leader>ft', tabs.list_tabs, {})
-  end
-
-  if scripts_status then
-    keymap.set('n', '<leader>f.', scripts.find_dotfiles, {})
-    keymap.set('n', '<leader>fp', scripts.find_projects, {})
-  end
+if not ts_status then
+  return
 end
 
+local diagnostics = function ()
+  builtin.diagnostics({layout_strategy='vertical',layout_config={width=0.5},wrap_results=true})
+end
+
+local telescope_mappings = {
+  { desc = 'Find files', cmd = builtin.find_files, keys = '<leader><space>', mode = 'n', options = {}, add_to_cc = true, },
+  { desc = 'Grep files', cmd = builtin.live_grep, keys = '<leader>fg', mode = 'n', options = {}, add_to_cc = true, },
+  { desc = 'Buffers', cmd = builtin.buffers, keys = '<leader>fb', mode = 'n', options = {}, add_to_cc = true, },
+  { desc = 'Help tags', cmd = builtin.help_tags, keys = '<leader>fh', mode = 'n', options = {}, },
+  { desc = 'Grep files by string on cursor', cmd = builtin.grep_string, keys = '<leader>fs', mode = 'n', options = {}, add_to_cc = true, },
+  { desc = 'Telescope buildins', cmd = builtin.builtin, keys = '<leader>fi', mode = 'n', options = {}, },
+  { desc = 'Diagnostics', cmd = diagnostics, keys = '<leader>fd', mode = 'n', options = {}, add_to_cc = true, },
+  { desc = 'Git branches', cmd = builtin.git_branches, keys = '<leader>gb', mode = 'n', options = {}, },
+  { desc = 'Git status', cmd = builtin.git_status, keys = '<leader>gs', mode = 'n', options = {}, },
+  { desc = 'Git commits', cmd = builtin.git_commits, keys = '<leader>gc', mode = 'n', options = {}, add_to_cc = true, },
+  { desc = 'Tabs', cmd = tabs.list_tabs, keys = '<leader>ft', mode = 'n', options = {}, unavailable = not tabs_status },
+  { desc = 'Dot files', cmd = scripts.find_dotfiles, keys = '<leader>f.', mode = 'n', options = {}, unavailable = not scripts_status },
+  { desc = 'Projects', cmd = scripts.find_projects, keys = '<leader>fp', mode = 'n', options = {}, unavailable = not scripts_status },
+  { desc = 'Command Center', cmd = ':Telescope command_center<CR>', keys = '<leader>i', mode = 'n', options = {} },
+  { desc = 'Files tree', cmd = ':Telescope file_browser select_buffer=true<CR>', keys = '<leader>e', mode = 'n', options = {}, },
+  { desc = 'Current buffer fuzzy find', cmd = ':Telescope current_buffer_fuzzy_find<CR>', keys = '<leader>bf', mode = 'n', options = {}, add_to_cc = true },
+}
+keymap_set(telescope_mappings, 'Telescope')
