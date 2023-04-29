@@ -20,6 +20,9 @@ keymap.set('n', '<Leader>m', "<Cmd>lua require('maximize').toggle()<CR>")
 -- nvim-tree
 keymap.set("n", "<leader>e", ":NvimTreeFindFileToggle<CR>") -- toggle file explorer
 
+-- folding
+keymap.set("n", "fo", "za")
+
 -- telescope
 local ts_status, builtin = pcall(require, 'telescope.builtin')
 local scripts_status, scripts = pcall(require, 'core.custom-scripts')
