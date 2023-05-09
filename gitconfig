@@ -7,3 +7,5 @@
 
 [web]
 	browser = open
+[core]
+	excludesFile = ~/.gitignore

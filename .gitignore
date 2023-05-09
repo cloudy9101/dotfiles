@@ -6,3 +6,8 @@ bak-files
 kickstart.nvim
 
 nvim/lazy-lock.json
+
+Gemfile.dev
+Gemfile.dev.lock
+
+.rubocop.dev.yml
