@@ -27,8 +27,8 @@ local mappings = {
   { desc = 'Leave insert mode', cmd = '<ESC>', keys = "jj", mode = "i", options = { noremap = true }, },
   { desc = 'Open new tab', cmd = ":tabnew<CR>", keys = "<leader>to", mode = "n", options = {}, add_to_cc = true, },
   { desc = 'Close current tab', cmd = ":tabclose<CR>", keys = "<leader>tx", mode = "n", options = {}, },
-  { desc = 'Goto next tab', cmd = ":tabn<CR>", keys = "<leader>tn", mode = "n", options = {}, add_to_cc = true, },
-  { desc = 'Goto prev tab', cmd = ":tabp<CR>", keys = "<leader>tp", mode = "n", options = {}, add_to_cc = true, },
+  { desc = 'Goto next tab', cmd = ":tabn<CR>", keys = "<tab><tab>", mode = "n", options = {}, },
+  { desc = 'Goto prev tab', cmd = ":tabp<CR>", keys = "<s-tab><s-tab>", mode = "n", options = {}, },
   { desc = 'Toggle window maximize', cmd = "<Cmd>lua require('maximize').toggle()<CR>", keys = '<Leader>m', mode = 'n', options = {}, add_to_cc = true, },
   -- { desc = 'Toggle files tree', cmd = ":NvimTreeFindFileToggle<CR>", keys = "<leader>e", mode = "n", options = {}, },
   { desc = 'Toggle folding', cmd = "za", keys = "fo", mode = "n", options = {}, add_to_cc = true, },
@@ -44,10 +44,6 @@ if not ts_status then
   return
 end
 
-local diagnostics = function ()
-  builtin.diagnostics({layout_strategy='vertical',layout_config={width=0.5},wrap_results=true})
-end
-
 local telescope_mappings = {
   { desc = 'Find files', cmd = builtin.find_files, keys = '<leader><space>', mode = 'n', options = {}, add_to_cc = true, },
   { desc = 'Grep files', cmd = builtin.live_grep, keys = '<leader>fg', mode = 'n', options = {}, add_to_cc = true, },
@@ -55,7 +51,6 @@ local telescope_mappings = {
   { desc = 'Help tags', cmd = builtin.help_tags, keys = '<leader>fh', mode = 'n', options = {}, },
   { desc = 'Grep files by string on cursor', cmd = builtin.grep_string, keys = '<leader>fs', mode = 'n', options = {}, add_to_cc = true, },
   { desc = 'Telescope buildins', cmd = builtin.builtin, keys = '<leader>fi', mode = 'n', options = {}, },
-  { desc = 'Diagnostics', cmd = diagnostics, keys = '<leader>fd', mode = 'n', options = {}, add_to_cc = true, },
   { desc = 'Git branches', cmd = builtin.git_branches, keys = '<leader>gb', mode = 'n', options = {}, },
   { desc = 'Git status', cmd = builtin.git_status, keys = '<leader>gs', mode = 'n', options = {}, },
   { desc = 'Git commits', cmd = builtin.git_commits, keys = '<leader>gc', mode = 'n', options = {}, add_to_cc = true, },
@@ -66,4 +61,11 @@ local telescope_mappings = {
   { desc = 'Files tree', cmd = ':Telescope file_browser select_buffer=true<CR>', keys = '<leader>e', mode = 'n', options = {}, },
   { desc = 'Current buffer fuzzy find', cmd = ':Telescope current_buffer_fuzzy_find<CR>', keys = '<leader>bf', mode = 'n', options = {}, add_to_cc = true },
 }
+
 keymap_set(telescope_mappings, 'Telescope')
+
+local lsp_mappings = {
+  { desc = 'Diagnostics', cmd = ':Telescope diagnostics theme=ivy<CR>', keys = '<leader>ld', mode = 'n', options = {}, add_to_cc = true },
+}
+
+keymap_set(lsp_mappings, 'LSP')
