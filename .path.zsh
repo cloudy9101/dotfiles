@@ -11,4 +11,4 @@ PATH=$HOME/.yarn/bin:$PATH
 
 # rbenv
 which rbenv &> /dev/null
-[[ $? -eq 0 ]] || eval "$(rbenv init - zsh)"
+[[ $? -eq 0 ]] && eval "$(rbenv init - zsh)"
