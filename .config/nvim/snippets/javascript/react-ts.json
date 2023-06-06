@@ -1,0 +1,8 @@
+{
+  "reactFunctionComponentWithRadix": {
+    "prefix": "rfcr",
+    "body": "const $0 = React.forwardRef<\n\tReact.ElementRef<typeof $1>,\n\tReact.ComponentPropsWithoutRef<typeof $1>\n>(({ className, children, ...props }, ref) => (\n\t<$1\n\t\tref={ref}\n\t\tclassName={cn(\n\t\t\t\"$2\",\n\t\t\tclassName,\n\t\t)}\n\t\t{...props}\n\t>\n\t\t{children}\n\t</$1>\n))",
+    "description": "Creates a React UI functional component with Radix"
+  }
+}
+
