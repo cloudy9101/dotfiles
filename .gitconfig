@@ -1,0 +1,11 @@
+# This is Git's per-user configuration file.
+[user]
+  name = Ray Hao
+  email = cloudy9101@gmail.com
+[init]
+  defaultBranch = main
+
+[web]
+	browser = open
+[core]
+	excludesFile = ~/.gitignore
