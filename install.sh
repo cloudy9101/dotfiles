@@ -18,11 +18,12 @@ git clone --bare git@github.com:cloudy9101/dotfiles.git --branch bare "$HOME/.cf
 function config {
    /usr/bin/git --git-dir="$HOME/.cfg/" --work-tree="$HOME" "$@"
 }
-mkdir -p .config-backup
 if config checkout; then
   echo "Checked out config.";
 else
   echo "Backing up pre-existing dot files.";
+
+  mkdir -p "$HOME/.config-backup"
   config checkout 2>&1 | grep -E "\s+\." | awk {'print $1'} | xargs -I{} mv $HOME/{} $HOME/.config-backup/{}
 fi;
 config checkout
