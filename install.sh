@@ -12,19 +12,15 @@ if [ ! -d "$HOME/.oh-my-zsh" ]; then
   git clone https://github.com/zsh-users/zsh-syntax-highlighting.git "${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting"
 fi
 
-# clone dotfiles in $HOME
-git clone --bare git@github.com:cloudy9101/dotfiles.git --branch bare "$HOME/.cfg"
+if [ ! -d "$HOME/.cfg" ]; then
+  # clone dotfiles in $HOME
+  git clone --bare git@github.com:cloudy9101/dotfiles.git --branch bare "$HOME/.cfg"
 
-function config {
-   /usr/bin/git --git-dir="$HOME/.cfg/" --work-tree="$HOME" "$@"
-}
-if config checkout; then
+  function config {
+    git --git-dir="$HOME/.cfg/" --work-tree="$HOME" "$@"
+  }
+
   echo "Checked out config.";
-else
-  echo "Backing up pre-existing dot files.";
-
-  mkdir -p "$HOME/.config-backup"
-  config checkout 2>&1 | grep -E "\s+\." | awk {'print $1'} | xargs -I{} mv $HOME/{} $HOME/.config-backup/{}
-fi;
-config checkout
-config config status.showUntrackedFiles no
+  config checkout
+  config config status.showUntrackedFiles no
+fi
