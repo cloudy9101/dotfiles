@@ -20,7 +20,14 @@ if [ ! -d "$HOME/.cfg" ]; then
     git --git-dir="$HOME/.cfg/" --work-tree="$HOME" "$@"
   }
 
-  echo "Checked out config.";
-  config checkout
+  if config checkout; then
+    echo "Checked out config.";
+  else
+    echo "Backing up pre-existing dot files.";
+
+    mkdir -p "$HOME/.config-backup"
+    config checkout 2>&1 | grep -E "\s+\." | awk {'print $1'} | xargs -I{} mv $HOME/{} $HOME/.config-backup/{}
+  fi;
+
   config config status.showUntrackedFiles no
 fi
