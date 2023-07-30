@@ -31,3 +31,10 @@ if [ ! -d "$HOME/.cfg" ]; then
 
   config config status.showUntrackedFiles no
 fi
+
+# Packages need for Ubuntu
+cat /etc/os-release | grep "NAME=\"Ubuntu\""
+if [ $? -eq 0 ]; then
+  sudo apt update
+  sudo apt install -y ripgrep xsel
+fi
