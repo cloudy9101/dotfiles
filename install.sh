@@ -36,5 +36,5 @@ fi
 cat /etc/os-release | grep "NAME=\"Ubuntu\""
 if [ $? -eq 0 ]; then
   sudo apt update
-  sudo apt install -y ripgrep xsel
+  sudo apt install -y ripgrep xsel tmux
 fi
