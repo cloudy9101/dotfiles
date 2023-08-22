@@ -25,7 +25,7 @@ local mappings = {
   -- delete single character without copying into register
   { desc = '', cmd = '"_x', keys = "x", mode = "n", options = {}, },
   { desc = 'Leave insert mode', cmd = '<ESC>', keys = "jj", mode = "i", options = { noremap = true }, },
-  { desc = 'Open new tab', cmd = ":tabnew<CR>", keys = "<leader>to", mode = "n", options = {}, add_to_cc = true, },
+  { desc = 'Open new tab', cmd = ":tabnew %<CR>", keys = "<leader>t", mode = "n", options = {}, add_to_cc = true, },
   { desc = 'Close current tab', cmd = ":tabclose<CR>", keys = "<leader>tx", mode = "n", options = {}, },
   { desc = 'Goto next tab', cmd = ":tabn<CR>", keys = "<tab><tab>", mode = "n", options = {}, },
   { desc = 'Goto prev tab', cmd = ":tabp<CR>", keys = "<s-tab><s-tab>", mode = "n", options = {}, },

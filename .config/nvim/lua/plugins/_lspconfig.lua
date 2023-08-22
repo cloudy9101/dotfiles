@@ -11,7 +11,35 @@ local servers = {
   bashls = {},
   cssls = {},
   dockerls = {},
-  eslint = {},
+  eslint = {
+    codeAction = {
+      disableRuleComment = {
+        enable = true,
+        location = "separateLine"
+      },
+      showDocumentation = {
+        enable = true
+      }
+    },
+    codeActionOnSave = {
+      enable = false,
+      mode = "all"
+    },
+    experimental = {
+      useFlatConfig = false
+    },
+    format = true,
+    onIgnoredFiles = "off",
+    packageManager = "yarn",
+    quiet = false,
+    rulesCustomizations = {},
+    run = "onType",
+    useESLintClass = false,
+    validate = "on",
+    workingDirectory = {
+      mode = "location"
+    }
+  },
   gopls = {},
   html = {},
   jsonls = {},
@@ -111,6 +139,7 @@ local M = {
     {
       'j-hui/fidget.nvim',
       config = true,
+      tag = 'legacy',
     },
 
     -- Additional lua configuration, makes nvim stuff amazing
