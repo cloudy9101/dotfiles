@@ -1,5 +1,5 @@
 local keymap = vim.keymap -- for conciseness
-local cc_status, cc = pcall(require, 'command_center')
+local cc_status, cc = pcall(require, 'commander')
 
 local keymap_set = function(mappings, cc_category)
   local cc_cmds = {}
@@ -17,7 +17,7 @@ local keymap_set = function(mappings, cc_category)
       })
     end
   end
-  cc.add(cc_cmds, { mode = cc.mode.ADD })
+  cc.add(cc_cmds, {})
 end
 
 local mappings = {
