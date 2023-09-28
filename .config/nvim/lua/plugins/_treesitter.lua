@@ -1,13 +1,14 @@
 local M = {
   'nvim-treesitter/nvim-treesitter',
-  build = function()
-    require('nvim-treesitter.install').update({ with_sync = true })
-  end,
+  build = ':TSUpdate',
   config = function()
-    require('nvim-treesitter.configs').setup({
+    local configs = require("nvim-treesitter.configs")
+
+    configs.setup({
       ensure_installed = { 'bash', 'css', 'dockerfile', 'go', 'html', 'javascript', 'json', 'lua', 'vim', 'markdown', 'ruby', 'scss', 'sql', 'tsx', 'typescript', 'yaml', 'terraform', },
+      sync_install = false,
       highlight = { enable = true },
-      indent = { enable = true, disable = { 'javascript', 'tsx', 'typescript' } },
+      indent = { enable = true },
       incremental_selection = {
         enable = true,
         keymaps = {
@@ -17,6 +18,9 @@ local M = {
           node_decremental = "grm",
         },
       },
+      modules = {},
+      ignore_install = {},
+      auto_install = true,
     })
   end
 }
