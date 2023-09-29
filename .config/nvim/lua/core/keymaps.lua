@@ -32,6 +32,7 @@ local mappings = {
   { desc = 'Toggle window maximize', cmd = "<Cmd>lua require('maximize').toggle()<CR>", keys = '<Leader>m', mode = 'n', options = {}, add_to_cc = true, },
   -- { desc = 'Toggle files tree', cmd = ":NvimTreeFindFileToggle<CR>", keys = "<leader>e", mode = "n", options = {}, },
   { desc = 'Toggle folding', cmd = "za", keys = "fo", mode = "n", options = {}, add_to_cc = true, },
+  { desc = 'Exit Terminal Mode', cmd = '<C-\\><C-n>', keys = "<ESC>", mode = "t", options = {}, },
 }
 keymap_set(mappings, 'Common')
 
