@@ -32,6 +32,7 @@ local mappings = {
   { desc = 'Toggle window maximize', cmd = "<Cmd>lua require('maximize').toggle()<CR>", keys = '<Leader>m', mode = 'n', options = {}, add_to_cc = true, },
   -- { desc = 'Toggle files tree', cmd = ":NvimTreeFindFileToggle<CR>", keys = "<leader>e", mode = "n", options = {}, },
   { desc = 'Toggle folding', cmd = "za", keys = "fo", mode = "n", options = {}, add_to_cc = true, },
+  { desc = 'Enter Terminal Mode', cmd = ":split term://zsh | :startinsert<CR>", keys = "<leader>st", mode = "n", options = {}, },
   { desc = 'Exit Terminal Mode', cmd = '<C-\\><C-n>', keys = "<ESC>", mode = "t", options = {}, },
 }
 keymap_set(mappings, 'Common')
@@ -58,7 +59,7 @@ local telescope_mappings = {
   { desc = 'Tabs', cmd = tabs.list_tabs, keys = '<leader>ft', mode = 'n', options = {}, unavailable = not tabs_status },
   { desc = 'Dot files', cmd = scripts.find_dotfiles, keys = '<leader>f.', mode = 'n', options = {}, unavailable = not scripts_status },
   { desc = 'Projects', cmd = scripts.find_projects, keys = '<leader>fp', mode = 'n', options = {}, unavailable = not scripts_status },
-  { desc = 'Command Center', cmd = ':Telescope command_center<CR>', keys = '<leader>i', mode = 'n', options = {} },
+  { desc = 'Command Center', cmd = ':Telescope commander<CR>', keys = '<leader>i', mode = 'n', options = {} },
   { desc = 'Files tree', cmd = ':Telescope file_browser select_buffer=true<CR>', keys = '<leader>e', mode = 'n', options = {}, },
   { desc = 'Current buffer fuzzy find', cmd = ':Telescope current_buffer_fuzzy_find<CR>', keys = '<leader>bf', mode = 'n', options = {}, add_to_cc = true },
 }

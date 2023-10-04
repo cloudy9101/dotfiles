@@ -6,7 +6,6 @@ local M = {
     'nvim-telescope/telescope-symbols.nvim',
     'LukasPietzschmann/telescope-tabs',
     'nvim-telescope/telescope-file-browser.nvim',
-    'FeiyouG/command_center.nvim',
     {
       'nvim-telescope/telescope-fzf-native.nvim',
       build = 'make',
@@ -18,7 +17,6 @@ local M = {
     local action_layout = require('telescope.actions.layout')
 
     require('telescope').load_extension('fzf')
-    require('telescope').load_extension('command_center')
     require('telescope').load_extension('file_browser')
     require('telescope').setup {
       defaults = {
