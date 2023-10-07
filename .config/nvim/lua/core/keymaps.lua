@@ -32,7 +32,15 @@ local mappings = {
   { desc = 'Toggle window maximize', cmd = "<Cmd>lua require('maximize').toggle()<CR>", keys = '<Leader>m', mode = 'n', options = {}, add_to_cc = true, },
   -- { desc = 'Toggle files tree', cmd = ":NvimTreeFindFileToggle<CR>", keys = "<leader>e", mode = "n", options = {}, },
   { desc = 'Toggle folding', cmd = "za", keys = "fo", mode = "n", options = {}, add_to_cc = true, },
-  { desc = 'Enter Terminal Mode', cmd = ":split term://zsh | :startinsert<CR>", keys = "<leader>st", mode = "n", options = {}, },
+  -- Terminal
+  { desc = 'Enter Terminal Mode', cmd = ":terminal | :startinsert<CR>", keys = "<leader>tn", mode = "n", options = {}, },
+  { desc = 'Open Terminal in New Tab', cmd = ":tabnew term://zsh | :startinsert<CR>", keys = "<leader>tt", mode = "n", options = {}, },
+  { desc = 'Split Terminal Vertically', cmd = '<Cmd>:vsplit term://zsh | :startinsert<CR>', keys = "<C-w>v", mode = "t", options = {}, },
+  { desc = 'Split Terminal Horizontally', cmd = '<Cmd>:split term://zsh | :startinsert<CR>', keys = "<C-w>s", mode = "t", options = {}, },
+  { desc = 'Terminal Move Left', cmd = '<Cmd>wincmd h<CR>', keys = "<C-w>h", mode = "t", options = {}, },
+  { desc = 'Terminal Move Right', cmd = '<Cmd>wincmd l<CR>', keys = "<C-w>l", mode = "t", options = {}, },
+  { desc = 'Terminal Move Up', cmd = '<Cmd>wincmd k<CR>', keys = "<C-w>k", mode = "t", options = {}, },
+  { desc = 'Terminal Move Down', cmd = '<Cmd>wincmd j<CR>', keys = "<C-w>j", mode = "t", options = {}, },
   { desc = 'Exit Terminal Mode', cmd = '<C-\\><C-n>', keys = "<ESC>", mode = "t", options = {}, },
 }
 keymap_set(mappings, 'Common')
