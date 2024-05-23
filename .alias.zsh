@@ -1,8 +1,11 @@
+# Basic
+alias ls="ls --color"
 # neovim
 alias vi="nvim"
 # git
 alias gu="git pull"
 alias ga="git add"
+alias gb="git branch"
 alias gc="git commit"
 alias gcm="git commit -m"
 alias gst="git status"
