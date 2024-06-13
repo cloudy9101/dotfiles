@@ -20,7 +20,7 @@ local gtbranches = function(opts)
       prompt_title = 'git branch',
       finder = finders.new_oneshot_job(cmd, {
         entry_maker = function(entry)
-          local value = string.match(entry, '^[%s%*]+(%w+)')
+          local value = string.match(entry, '^[%s%*]+(.-)%s')
           return {
             value = value,
             display = entry,

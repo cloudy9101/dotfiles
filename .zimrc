@@ -1,5 +1,4 @@
 zmodule zsh-users/zsh-syntax-highlighting
 zmodule zsh-users/zsh-autosuggestions
 zmodule zsh-users/zsh-completions
-zmodule romkatv/powerlevel10k --use degit
 zmodule Aloxaf/fzf-tab

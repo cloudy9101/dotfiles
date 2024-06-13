@@ -1,14 +1,10 @@
-# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
-# Initialization code that may require console input (password prompts, [y/n]
-# confirmations, etc.) must go above this block; everything else may go below.
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
-
 # PATH
 [[ ! -f ~/.path.zsh ]] || source ~/.path.zsh
 # ALIAS
 [[ ! -f ~/.alias.zsh ]] || source ~/.alias.zsh
+
+# Oh my posh
+eval "$(oh-my-posh init zsh --config $HOME/.hunk.omp.json)"
 
 ### ZIM ###
 ZIM_HOME=~/.cache/.zim
@@ -34,14 +30,7 @@ zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color $realpath'
 # set descriptions format to enable group support
 # NOTE: don't use escape sequences here, fzf-tab will ignore them
 zstyle ':completion:*:descriptions' format '[%d]'
-
 ### ZIM ###
-
-### Powerlevel10K ###
-ZSH_THEME="powerlevel10k/powerlevel10k"
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-### Powerlevel10K ###
 
 ### FZF ###
 eval "$(fzf --zsh)"
