@@ -14,5 +14,6 @@ fi
 
 if [ -f $HOME/.asdf/plugins/golang/set-env.zsh ]; then
   # set GOROOT
+  export ASDF_GOLANG_MOD_VERSION_ENABLED=true
   . $HOME/.asdf/plugins/golang/set-env.zsh
 fi
