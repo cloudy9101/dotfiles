@@ -1,5 +1,5 @@
 # /usr/local/bin
-export PATH=$PATH:/usr/local/bin
+export PATH=$PATH:/usr/local/bin:$HOME/.cache/bin
 
 if [[ "$OSTYPE" == "linux-gnu"* ]]; then
   # asdf
