@@ -3,7 +3,7 @@
 # Linux
 if [[ "$OSTYPE" == "linux-gnu"* ]]; then
   sudo apt update
-  sudo apt install -y ripgrep xsel tmux fzf
+  sudo apt install -y ripgrep xsel tmux fzf git
 
   # install neovim
   if [ ! -h "$HOME/.cache/bin/nvim" ]; then
@@ -50,4 +50,9 @@ if [ ! -d "$HOME/.cfg" ]; then
   fi;
 
   config config status.showUntrackedFiles no
+fi
+
+# Install tpm
+if [ ! -d $HOME/.tmux/plugins/tpm ]; then
+  git clone https://github.com/tmux-plugins/tpm $HOME/.tmux/plugins/tpm
 fi
