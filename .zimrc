@@ -1,4 +1,4 @@
 zmodule zsh-users/zsh-syntax-highlighting
 zmodule zsh-users/zsh-autosuggestions
 zmodule zsh-users/zsh-completions
-zmodule Aloxaf/fzf-tab
+zmodule https://github.com/agkozak/zsh-z

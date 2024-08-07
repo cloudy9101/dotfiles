@@ -1,13 +1,14 @@
 # PATH
-[[ ! -f ~/.path.zsh ]] || source ~/.path.zsh
+[[ ! -f $HOME/.path.zsh ]] || source $HOME/.path.zsh
 # ALIAS
-[[ ! -f ~/.alias.zsh ]] || source ~/.alias.zsh
+[[ ! -f $HOME/.alias.zsh ]] || source $HOME/.alias.zsh
 
-# Oh my posh
-eval "$(oh-my-posh init zsh --config $HOME/.hunk.omp.json)"
+# Starship prompt
+STARSHIP_LOG=error
+eval "$(starship init zsh)"
 
 ### ZIM ###
-ZIM_HOME=~/.cache/.zim
+ZIM_HOME=$HOME/.cache/.zim
 # Download zimfw plugin manager if missing.
 if [[ ! -e ${ZIM_HOME}/zimfw.zsh ]]; then
   curl -fsSL --create-dirs -o ${ZIM_HOME}/zimfw.zsh \
@@ -20,25 +21,17 @@ fi
 # Initialize modules.
 source ${ZIM_HOME}/init.zsh
 
-autoload -U compinit && compinit
+autoload -Uz compinit && compinit
 
 # Completion styling
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 zstyle ':completion:*' menu no
-zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color $realpath'
-# set descriptions format to enable group support
-# NOTE: don't use escape sequences here, fzf-tab will ignore them
-zstyle ':completion:*:descriptions' format '[%d]'
 ### ZIM ###
 
 ### FZF ###
 eval "$(fzf --zsh)"
 ### FZF ###
-
-### ZOXIDE ###
-eval "$(zoxide init zsh)"
-### ZOXIDE ###
 
 ### User configuration ###
 
@@ -65,4 +58,6 @@ setopt hist_ignore_dups
 setopt hist_find_no_dups
 bindkey '^p' history-search-backward
 bindkey '^n' history-search-forward
+
+bindkey -e
 ### User configuration ###
