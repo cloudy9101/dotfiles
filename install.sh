@@ -24,7 +24,7 @@ if [[ "$OSTYPE" == "linux-gnu"* ]]; then
   # install fzf
   if [ ! -d "$HOME/.fzf" ]; then
     git clone --depth 1 https://github.com/junegunn/fzf.git $HOME/.fzf
-    $HOME/.fzf/install
+    $HOME/.fzf/install --no-bash --no-zsh --no-fish --completion --key-bindings
   fi
 
 # OSX
