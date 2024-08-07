@@ -62,3 +62,17 @@ fi
 if [ ! -d "$HOME/.tmux/plugins/tpm" ]; then
   git clone https://github.com/tmux-plugins/tpm $HOME/.tmux/plugins/tpm
 fi
+
+. $HOME/.path.zsh
+
+# Setup nodejs/golang asdf plugin and install global version
+if [ ! -d "$HOME/.asdf/plugins/nodejs"]; then
+  asdf plugin add nodejs https://github.com/asdf-vm/asdf-nodejs.git
+  asdf install nodejs 20.16.0
+  asdf global nodejs 20.16.0
+fi
+if [ ! -d "$HOME/.asdf/plugins/golang" ]; then
+  asdf plugin add golang https://github.com/asdf-community/asdf-golang.git
+  asdf install golang latest
+  asdf global golang latest
+fi
