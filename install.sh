@@ -14,10 +14,10 @@ if [[ "$OSTYPE" == "linux-gnu"* ]]; then
     ln -s $HOME/.cache/nvim-linux64/bin/nvim $HOME/.cache/bin/nvim
   fi
   # install starship
-  if which starship >/dev/null; then
+  if [ ! -f $HOME/.cache/bin/starship ]; then
     curl -sS https://starship.rs/install.sh | sh -s -- -b $HOME/.cache/bin -f
   fi
-  if [ ! -d $HOME/.asdf ]; then
+  if [ ! -d "$HOME/.asdf" ]; then
     git clone https://github.com/asdf-vm/asdf.git $HOME/.asdf --branch v0.14.0
   fi
 
@@ -27,7 +27,7 @@ elif [[ "$OSTYPE" == "darwin"* ]]; then
   # Install Homebrew if not exists
   if [ ! -f /opt/homebrew/bin/brew ]; then
     curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh
-  end
+  fi
   brew update
   brew install neovim tmux ripgrep starship asdf fzf
 fi
@@ -53,6 +53,6 @@ if [ ! -d "$HOME/.cfg" ]; then
 fi
 
 # Install tpm
-if [ ! -d $HOME/.tmux/plugins/tpm ]; then
+if [ ! -d "$HOME/.tmux/plugins/tpm" ]; then
   git clone https://github.com/tmux-plugins/tpm $HOME/.tmux/plugins/tpm
 fi
