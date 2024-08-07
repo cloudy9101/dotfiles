@@ -3,7 +3,7 @@
 # Linux
 if [[ "$OSTYPE" == "linux-gnu"* ]]; then
   sudo apt update
-  sudo apt install -y ripgrep xsel tmux fzf git
+  sudo apt install -y ripgrep xsel tmux git
 
   # install neovim
   if [ ! -h "$HOME/.cache/bin/nvim" ]; then
@@ -17,8 +17,14 @@ if [[ "$OSTYPE" == "linux-gnu"* ]]; then
   if [ ! -f $HOME/.cache/bin/starship ]; then
     curl -sS https://starship.rs/install.sh | sh -s -- -b $HOME/.cache/bin -f
   fi
+  # install asdf
   if [ ! -d "$HOME/.asdf" ]; then
     git clone https://github.com/asdf-vm/asdf.git $HOME/.asdf --branch v0.14.0
+  fi
+  # install fzf
+  if [! -d "$HOME/.fzf" ]; then
+    git clone --depth 1 https://github.com/junegunn/fzf.git $HOME/.fzf
+    $HOME/.fzf/install
   fi
 
 # OSX
