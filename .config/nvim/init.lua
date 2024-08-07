@@ -572,7 +572,7 @@ require('lazy').setup({
         -- clangd = {},
 
         -- Backend Languages
-        solargraph = {},
+        -- solargraph = {},
         gopls = {
           settings = {
             gopls = {
@@ -582,7 +582,7 @@ require('lazy').setup({
             },
           },
         },
-        elixirls = {},
+        -- elixirls = {},
         sqlls = {},
 
         -- Frontend languages
@@ -595,7 +595,7 @@ require('lazy').setup({
 
         -- Others
         bashls = {},
-        terraformls = {},
+        -- terraformls = {},
         jsonls = {},
         yamlls = {},
         dockerls = {},
