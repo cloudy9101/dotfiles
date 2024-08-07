@@ -66,7 +66,7 @@ fi
 . $HOME/.path.zsh
 
 # Setup nodejs/golang asdf plugin and install global version
-if [ ! -d "$HOME/.asdf/plugins/nodejs"]; then
+if [ ! -d "$HOME/.asdf/plugins/nodejs" ]; then
   asdf plugin add nodejs https://github.com/asdf-vm/asdf-nodejs.git
   asdf install nodejs 20.16.0
   asdf global nodejs 20.16.0
