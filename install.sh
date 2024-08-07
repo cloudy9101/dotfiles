@@ -22,7 +22,7 @@ if [[ "$OSTYPE" == "linux-gnu"* ]]; then
     git clone https://github.com/asdf-vm/asdf.git $HOME/.asdf --branch v0.14.0
   fi
   # install fzf
-  if [! -d "$HOME/.fzf" ]; then
+  if [ ! -d "$HOME/.fzf" ]; then
     git clone --depth 1 https://github.com/junegunn/fzf.git $HOME/.fzf
     $HOME/.fzf/install
   fi
