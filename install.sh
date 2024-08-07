@@ -1,15 +1,35 @@
 #!/bin/bash
 
-if [ ! -d "$HOME/.oh-my-zsh" ]; then
-  # install oh-my-zsh
-  sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended --keep-zshrc
+# Linux
+if [[ "$OSTYPE" == "linux-gnu"* ]]; then
+  sudo apt update
+  sudo apt install -y ripgrep xsel tmux fzf
 
-  # install p10k
-  git clone --depth=1 https://github.com/romkatv/powerlevel10k.git "${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k"
+  # install neovim
+  if [ ! -h "$HOME/.cache/bin/nvim" ]; then
+    mkdir -p $HOME/.cache/bin
+    curl -L -o $HOME/.cache/nvim-linux64.tar.gz https://github.com/neovim/neovim/releases/latest/download/nvim-linux64.tar.gz
+    rm -rf $HOME/.cache/nvim-linux64
+    tar -C $HOME/.cache -xzf $HOME/.cache/nvim-linux64.tar.gz
+    ln -s $HOME/.cache/nvim-linux64/bin/nvim $HOME/.cache/bin/nvim
+  fi
+  # install starship
+  if which starship >/dev/null; then
+    curl -sS https://starship.rs/install.sh | sh -s -- -b $HOME/.cache/bin -f
+  fi
+  if [ ! -d $HOME/.asdf ]; then
+    git clone https://github.com/asdf-vm/asdf.git $HOME/.asdf --branch v0.14.0
+  fi
 
-  # install zsh plugins
-  git clone https://github.com/zsh-users/zsh-autosuggestions "${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/zsh-autosuggestions"
-  git clone https://github.com/zsh-users/zsh-syntax-highlighting.git "${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting"
+# OSX
+elif [[ "$OSTYPE" == "darwin"* ]]; then
+
+  # Install Homebrew if not exists
+  if [ ! -f /opt/homebrew/bin/brew ]; then
+    curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh
+  end
+  brew update
+  brew install neovim tmux ripgrep starship asdf fzf
 fi
 
 if [ ! -d "$HOME/.cfg" ]; then
@@ -30,11 +50,4 @@ if [ ! -d "$HOME/.cfg" ]; then
   fi;
 
   config config status.showUntrackedFiles no
-fi
-
-# Packages need for Ubuntu
-cat /etc/os-release | grep "NAME=\"Ubuntu\""
-if [ $? -eq 0 ]; then
-  sudo apt update
-  sudo apt install -y ripgrep xsel tmux
 fi
