@@ -1,0 +1,25 @@
+# This is Git's per-user configuration file.
+[user]
+  name = Ray Hao
+  email = ray.hao@loyalty.co.nz
+[init]
+  defaultBranch = main
+
+[web]
+	browser = open
+[core]
+	excludesFile = ~/.config/git/ignore
+	editor = nvim
+[color]
+	diff = auto
+	status = auto
+	branch = auto
+[push]
+	default = current
+[url "ssh://git@github.com/"]
+	insteadOf = https://github.com/
+[filter "lfs"]
+	required = true
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process

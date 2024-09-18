@@ -1,0 +1,27 @@
+#!/bin/zsh
+
+# XDG
+export XDG_CONFIG_HOME="$HOME/.config"
+export XDG_CACHE_HOME="$HOME/.cache"
+export XDG_DATA_HOME="$HOME/.local/share"
+
+# set zsh dot dir
+export ZDOTDIR="$XDG_CONFIG_HOME/zsh"
+
+# language
+export LANG=en_US.UTF-8
+export LC_ALL=en_US.UTF-8
+
+# typeset
+#     read more at:
+#     * linux-mag.com/id/1079/
+#     * zsh.sourceforge.net/Guide/zshguide03.html
+
+# preserve just only unique path entries
+typeset -U path
+
+# others
+export EDITOR="nvim"
+export ASDF_CONFIG_FILE="$XDG_CONFIG_HOME/asdf/asdfrc"
+export ASDF_DEFAULT_TOOL_VERSIONS_FILENAME="$XDG_CONFIG_HOME/asdf/tool-versions"
+export PATH="$PATH:/opt/homebrew/bin"

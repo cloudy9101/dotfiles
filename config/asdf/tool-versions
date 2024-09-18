@@ -1,0 +1,6 @@
+ruby 3.3.4
+golang 1.23.0
+nodejs 20.16.0
+helm 3.14.0
+rust 1.80.0
+python 3.12.5
