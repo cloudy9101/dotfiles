@@ -23,5 +23,4 @@ typeset -U path
 # others
 export EDITOR="nvim"
 export ASDF_CONFIG_FILE="$XDG_CONFIG_HOME/asdf/asdfrc"
-export ASDF_DEFAULT_TOOL_VERSIONS_FILENAME="$XDG_CONFIG_HOME/asdf/tool-versions"
 export PATH="$PATH:/opt/homebrew/bin"

@@ -7,5 +7,6 @@ include_source "alias.zsh"
 include_source "zim.zsh"
 include_source "zstyle.zsh"
 include_source "misc.zsh"
+# include_source "zellij.zsh"
 
 is_tmux_enabled && include_source "tmux.zsh"

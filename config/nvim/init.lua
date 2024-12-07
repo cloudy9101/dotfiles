@@ -299,6 +299,7 @@ require('lazy').setup({
 
   { -- Fuzzy Finder (files, lsp, etc)
     'nvim-telescope/telescope.nvim',
+    enabled = false,
     event = 'VimEnter',
     branch = '0.1.x',
     dependencies = {
@@ -586,7 +587,7 @@ require('lazy').setup({
         sqlls = {},
 
         -- Frontend languages
-        tsserver = {},
+        ts_ls = {},
         eslint = {},
         prettierd = {},
         tailwindcss = {},

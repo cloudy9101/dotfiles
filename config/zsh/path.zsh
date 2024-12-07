@@ -13,3 +13,4 @@ case ":$PATH:" in
 esac
 
 export PATH="/usr/local/bin:$PATH"
+export PATH="/opt/homebrew/opt/mysql-client/bin:$PATH"
