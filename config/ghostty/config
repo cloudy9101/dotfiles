@@ -1,3 +1,4 @@
 theme = tokyonight_moon
 font-family = Cascadia Code NF
 font-size = 18
+maximize = true
