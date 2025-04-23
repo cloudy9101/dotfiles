@@ -41,7 +41,7 @@ if [[ $machine == "Linux" ]]; then
   mise install
 
   echo "Install starship"
-  curl -sS https://starship.rs/install.sh | sh -f -y -b $HOME/.local/bin
+  curl -sS https://starship.rs/install.sh | sh -s -- -f -y -b $HOME/.local/bin
 
   echo "Install neovim"
   curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim-linux-${arch}.tar.gz
@@ -67,3 +67,9 @@ echo "Install ohmyzsh plugins"
 export ZSH_CUSTOM=$ZDOTDIR/ohmyzsh-custom
 git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
 git clone https://github.com/wintermi/zsh-mise ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-mise
+
+# Change default shell to zsh in GitHub codespaces
+if [[ $CODESPACES == "true" ]]; then
+  echo "Change default shell to zsh in GitHub codespaces"
+  sudo chsh "$(id -un)" --shell "/usr/bin/zsh"
+fi
