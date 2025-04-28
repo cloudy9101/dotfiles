@@ -24,8 +24,6 @@ local lsps = {
 	ruby_lsp = {},
 
 	rust_analyzer = {},
-
-	goimports = {},
 }
 
 local ensure_installed = {}
