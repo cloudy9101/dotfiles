@@ -22,7 +22,7 @@ local M = {
 
 				rust = { "rustfmt", lsp_format = "fallback" },
 
-				["*"] = { "codespell", "trim_whitespace", "trim_newlines" },
+				["*"] = { "codespell", "trim_whitespace" },
 			},
 			default_format_opts = {
 				lsp_format = "fallback",
