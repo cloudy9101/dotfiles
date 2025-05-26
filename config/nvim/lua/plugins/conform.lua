@@ -17,7 +17,7 @@ local M = {
 				javascriptreact = { "prettierd", "prettier", stop_after_first = true },
 				typescriptreact = { "prettierd", "prettier", stop_after_first = true },
 
-				ruby = { "rubocop" },
+				-- ruby = { "rubocop" },
 				eruby = { "erb_format" },
 
 				rust = { "rustfmt", lsp_format = "fallback" },

@@ -28,17 +28,19 @@ if [[ $machine == "Mac" ]]; then
   brew install openssl@3 readline libyaml gmp autoconf
 
   echo "Install packages"
-  brew install ghostty starship mise neovim
+  brew install ghostty starship mise neovim tmux
   brew install --cask font-cascadia-code-nf
 fi
 
 if [[ $machine == "Linux" ]]; then
   echo "Install dependencies for ruby"
-  sudo apt install -y autoconf patch build-essential rustc libssl-dev libyaml-dev libreadline6-dev zlib1g-dev libgmp-dev libncurses5-dev libffi-dev libgdbm6 libgdbm-dev libdb-dev uuid-dev
+  sudo apt install -y autoconf patch build-essential rustc libssl-dev libyaml-dev libreadline6-dev zlib1g-dev libgmp-dev libncurses5-dev libffi-dev libgdbm6 libgdbm-dev libdb-dev uuid-dev tmux
 
-  echo "Install mise"
-  curl https://mise.run | sh
-  mise install
+  if [[ $CODESPACES != "true" ]]; then
+    echo "Install mise"
+    curl https://mise.run | sh
+    mise install
+  fi
 
   echo "Install starship"
   curl -sS https://starship.rs/install.sh | sh -s -- -f -y -b $HOME/.local/bin
@@ -50,7 +52,7 @@ if [[ $machine == "Linux" ]]; then
 fi
 
 echo "Link config files/folders"
-for f in ghostty mise nvim zsh starship.toml; do
+for f in ghostty mise nvim zsh starship.toml tmux; do
   if ! test -e $HOME/.config/${f}; then
     ln -s $(pwd)/config/${f} $HOME/.config/${f}
   fi

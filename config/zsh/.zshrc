@@ -105,11 +105,3 @@ source $ZSH/oh-my-zsh.sh
 
 eval "$(mise activate zsh)"
 eval "$(starship init zsh)"
-
-# pnpm
-export PNPM_HOME="/Users/ray/Library/pnpm"
-case ":$PATH:" in
-  *":$PNPM_HOME:"*) ;;
-  *) export PATH="$PNPM_HOME:$PATH" ;;
-esac
-# pnpm end

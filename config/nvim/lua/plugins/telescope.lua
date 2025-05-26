@@ -38,11 +38,13 @@ local M = {
       local word = vim.fn.expand("<cword>")
       builtin.grep_string({ search = word })
     end)
+    vim.keymap.set('n', '<leader>fs', builtin.current_buffer_fuzzy_find, {})
 
     vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
     vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
 
     vim.keymap.set('n', '<C-2>', builtin.lsp_document_symbols, {})
+    vim.keymap.set('n', '<leader>fd', builtin.diagnostics, {})
   end,
 }
 

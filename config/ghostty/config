@@ -2,3 +2,22 @@ theme = tokyonight_moon
 font-family = Cascadia Code NF
 font-size = 18
 maximize = true
+mouse-hide-while-typing = true
+scrollback-limit = 10000
+window-save-state = always
+shell-integration = zsh
+
+keybind = ctrl+s>r=reload_config
+
+keybind = ctrl+s>c=new_tab
+keybind = ctrl+s>n=next_tab
+keybind = ctrl+s>p=previous_tab
+
+keybind = ctrl+s>s=new_split:down
+keybind = ctrl+s>v=new_split:right
+keybind = ctrl+s>f=toggle_split_zoom
+
+keybind = ctrl+s>j=goto_split:down
+keybind = ctrl+s>k=goto_split:up
+keybind = ctrl+s>h=goto_split:left
+keybind = ctrl+s>l=goto_split:right

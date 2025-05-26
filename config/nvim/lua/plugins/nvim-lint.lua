@@ -13,7 +13,7 @@ local M = {
 			javascriptreact = { "eslint" },
 			typescriptreact = { "eslint" },
 
-			ruby = { "rubocop" },
+			-- ruby = { "rubocop" },
 
 			eruby = { "erb_lint" },
 		}

@@ -2,7 +2,6 @@ local lsps = {
 	lua_ls = {},
 	vimls = {},
 	bashls = {},
-	cmake = {},
 	jsonls = {},
 	yamlls = {},
 
@@ -26,13 +25,6 @@ local lsps = {
 	rust_analyzer = {},
 }
 
-local ensure_installed = {}
-local n = 0
-for k, v in pairs(lsps) do
-	n = n + 1
-	ensure_installed[n] = k
-end
-
 local M = {
 	{
 		"neovim/nvim-lspconfig",
@@ -43,7 +35,7 @@ local M = {
 		config = function()
 			require("mason").setup()
 			require("mason-lspconfig").setup({
-				ensure_installed = ensure_installed,
+				ensure_installed = {},
 				automatic_installation = true,
 			})
 
@@ -65,6 +57,7 @@ local M = {
 			})
 
 			vim.keymap.set("n", "gd", vim.lsp.buf.definition, {})
+      vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist)
 		end,
 	},
 }
