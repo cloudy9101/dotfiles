@@ -6,15 +6,18 @@ local lsps = {
 	yamlls = {},
 
 	cssls = {},
-	html = {},
+	html = {
+    filetype = { "html", "tmpl" },
+  },
 
 	dockerls = {},
 	docker_compose_language_service = {},
 
 	sqls = {},
 
-	gopls = {},
-	templ = {},
+	gopls = {
+    filetype = { "go", "tmpl" },
+  },
 
 	ts_ls = {},
 
@@ -23,6 +26,8 @@ local lsps = {
 	ruby_lsp = {},
 
 	rust_analyzer = {},
+
+  zls = {}
 }
 
 local M = {

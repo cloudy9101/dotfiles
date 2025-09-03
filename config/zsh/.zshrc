@@ -105,3 +105,5 @@ source $ZSH/oh-my-zsh.sh
 
 eval "$(mise activate zsh)"
 eval "$(starship init zsh)"
+
+alias claude="$HOME/.claude/local/claude"
