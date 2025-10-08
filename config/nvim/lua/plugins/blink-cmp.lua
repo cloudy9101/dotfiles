@@ -35,7 +35,18 @@ local M = {
     -- Default list of enabled providers defined so that you can extend it
     -- elsewhere in your config, without redefining it, due to `opts_extend`
     sources = {
-      default = { 'lsp', 'path', 'snippets', 'buffer' },
+      default = function()
+        local success, node = pcall(vim.treesitter.get_node)
+        if success and node and vim.tbl_contains({ 'comment', 'line_comment', 'block_comment' }, node:type()) then
+          return { 'buffer' }
+        elseif vim.bo.filetype == 'lua' then
+          return { 'lsp', 'path' }
+        elseif vim.bo.filetype == 'html' then
+          return { 'lsp', 'path', 'snippets', 'buffer' }
+        else
+          return { 'lsp', 'path', 'snippets', 'buffer' }
+        end
+      end,
 
       providers = {
         snippets = {
@@ -44,10 +55,11 @@ local M = {
               ruby = { "rails" },
               javascript = { "remix-ts" },
               typescript = { "remix-ts" },
+              templ = { "html", "go" },
             }
           }
         }
-      }
+      },
     },
 
     -- (Default) Rust fuzzy matcher for typo resistance and significantly better performance
@@ -55,7 +67,9 @@ local M = {
     -- when the Rust fuzzy matcher is not available, by using `implementation = "prefer_rust"`
     --
     -- See the fuzzy documentation for more information
-    fuzzy = { implementation = "prefer_rust_with_warning" }
+    fuzzy = { implementation = "prefer_rust_with_warning" },
+
+    signature = { enabled = true },
   },
   opts_extend = { "sources.default" }
 }

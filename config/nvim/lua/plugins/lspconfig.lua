@@ -6,9 +6,7 @@ local lsps = {
 	yamlls = {},
 
 	cssls = {},
-	html = {
-    filetype = { "html", "tmpl" },
-  },
+	html = {},
 
 	dockerls = {},
 	docker_compose_language_service = {},
@@ -16,7 +14,7 @@ local lsps = {
 	sqls = {},
 
 	gopls = {
-    filetype = { "go", "tmpl" },
+    filetypes = { "go", "templ" },
   },
 
 	ts_ls = {},
@@ -27,7 +25,9 @@ local lsps = {
 
 	rust_analyzer = {},
 
-  zls = {}
+  zls = {},
+
+  templ = {},
 }
 
 local M = {
@@ -45,8 +45,16 @@ local M = {
 			})
 
 			for k, v in pairs(lsps) do
+        if (k == "html") then
+          local capabilities = vim.lsp.protocol.make_client_capabilities()
+          capabilities.textDocument.completion.completionItem.snippetSupport = true
+          v["capabilities"] = capabilities
+				  vim.lsp.config(k, v)
+        else
+				  vim.lsp.config(k, v)
+        end
+
 				vim.lsp.enable(k)
-				vim.lsp.config(k, v)
 			end
 
 			vim.diagnostic.config({

@@ -38,6 +38,7 @@ local M = {
         "gosum",
         "gotmpl",
         "gowork",
+        "templ",
 
         "javascript",
         "typescript",

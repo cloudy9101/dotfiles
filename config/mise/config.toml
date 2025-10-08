@@ -3,20 +3,15 @@ go = "latest"
 node = "lts"
 ruby = "latest"
 rust = "latest"
-
-# npm packages
-"npm:typescript" = "latest"
-"npm:eslint" = "latest"
-"npm:stylelint" = "latest"
-
-# Ruby gems
-"gem:rubocop" = "latest"
-"gem:ruby-lsp" = "latest"
+watchexec = "latest"
 zig = "latest"
 
 [settings]
 idiomatic_version_file_enable_tools = []
-experimental = true
+# experimental = true
 
 [env]
-_.path = ['{{config_root}}/node_modules/.bin']
+# _.path = ['{{config_root}}/node_modules/.bin']
+MISE_GO_DEFAULT_PACKAGES_FILE = "{{env.HOME}}/.config/mise/default-go-packages"
+MISE_RUBY_DEFAULT_PACKAGES_FILE = "{{env.HOME}}/.config/mise/default-gems"
+MISE_NODE_DEFAULT_PACKAGES_FILE = "{{env.HOME}}/.config/mise/default-nodejs-packages"

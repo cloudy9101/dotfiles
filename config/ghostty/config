@@ -1,10 +1,9 @@
-theme = tokyonight_moon
+theme = TokyoNight Moon
 font-family = Cascadia Code NF
 font-size = 18
 maximize = true
 mouse-hide-while-typing = true
 scrollback-limit = 10000
-window-save-state = always
 shell-integration = zsh
 
 keybind = ctrl+s>r=reload_config
