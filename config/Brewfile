@@ -31,6 +31,8 @@ brew "zoxide"
 brew "fd"
 # Terminal-based AI coding assistant
 cask "claude-code"
+# Kubernetes and container management on the desktop
+cask "rancher"
 
 ### GUI
 # Terminal emulator that uses platform-native UI and GPU acceleration
