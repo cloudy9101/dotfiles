@@ -1,0 +1,77 @@
+### TUI
+# GNU Pretty Good Privacy (PGP) package
+brew "gnupg"
+# Command-line fuzzy finder written in Go
+brew "fzf"
+# Search tool like grep and The Silver Searcher
+brew "ripgrep"
+# Resource monitor. C++ version and continuation of bashtop and bpytop
+brew "btop"
+# GitHub command-line tool
+brew "gh"
+# Lightweight and flexible command-line JSON processor
+brew "jq"
+# Simple terminal UI for git commands
+brew "lazygit"
+# Polyglot runtime manager (asdf rust clone)
+brew "mise"
+# Ambitious Vim-fork focused on extensibility and agility
+brew "neovim"
+# 7-Zip is a file archiver with a high compression ratio
+brew "sevenzip"
+# Cross-shell prompt for astronauts
+brew "starship"
+# Internet file retriever
+brew "wget"
+# Blazing fast terminal file manager written in Rust, based on async I/O
+brew "yazi"
+# Shell extension to navigate your filesystem faster
+brew "zoxide"
+# Simple, fast and user-friendly alternative to find
+brew "fd"
+# Terminal-based AI coding assistant
+cask "claude-code"
+
+### GUI
+# Terminal emulator that uses platform-native UI and GPU acceleration
+cask "ghostty"
+# Web browser
+cask "google-chrome"
+# Knowledge base that works on top of a local folder of plain text Markdown files
+cask "obsidian"
+# Control your tools with a few keystrokes
+cask "raycast"
+# Team communication and collaboration software
+cask "slack"
+# Music streaming service
+cask "spotify"
+# Cloudflare Tunnel client (formerly Argo Tunnel)
+brew "cloudflared"
+# Anthropic's official Claude AI desktop app
+cask "claude"
+
+### DEPS
+# GNU multiple precision arithmetic library
+brew "gmp"
+# Cryptography and SSL/TLS Toolkit
+brew "openssl@3"
+# Play, record, convert, and stream audio and video
+brew "ffmpeg"
+# Tools and libraries to manipulate images in many formats
+brew "imagemagick"
+# Postgres C API library
+brew "libpq"
+# YAML Parser
+brew "libyaml"
+
+### FONTS
+cask "font-cascadia-code-nf"
+cask "font-symbols-only-nerd-font"
+
+### GAMES
+# Video game digital distribution service
+cask "steam"
+# GameStream client
+cask "moonlight"
+# Free messaging and calling application
+cask "wechat"
