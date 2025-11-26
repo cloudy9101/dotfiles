@@ -31,8 +31,11 @@ brew "zoxide"
 brew "fd"
 # Terminal-based AI coding assistant
 cask "claude-code"
-# Kubernetes and container management on the desktop
-cask "rancher"
+# Lazydocker
+brew "lazydocker"
+# k9s
+tap "derailed/k9s"
+brew "k9s"
 
 ### GUI
 # Terminal emulator that uses platform-native UI and GPU acceleration
@@ -51,6 +54,8 @@ cask "spotify"
 brew "cloudflared"
 # Anthropic's official Claude AI desktop app
 cask "claude"
+# Kubernetes and container management on the desktop
+cask "rancher"
 
 ### DEPS
 # GNU multiple precision arithmetic library
