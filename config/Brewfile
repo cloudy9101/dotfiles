@@ -17,6 +17,15 @@ brew "lazygit"
 brew "mise"
 # Ambitious Vim-fork focused on extensibility and agility
 brew "neovim"
+# Lua related (support neovim plugins)
+brew "lua"
+brew "luarocks"
+# PDF preview
+brew "ghostscript"
+# LaTeX render
+brew "tectonic"
+# Mermaid CLI / Render
+brew "mermaid-cli"
 # 7-Zip is a file archiver with a high compression ratio
 brew "sevenzip"
 # Cross-shell prompt for astronauts
