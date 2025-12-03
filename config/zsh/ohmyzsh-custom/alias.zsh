@@ -3,6 +3,7 @@ alias dot='cd $HOME/Projects/dotfiles'
 alias crt='cd $(git rev-parse --show-toplevel)'
 
 alias lg='lazygit'
+alias ks='k9s'
 
 # yazi file manager - change directory when quit
 function y() {
