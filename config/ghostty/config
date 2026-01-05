@@ -22,4 +22,6 @@ keybind = ctrl+s>h=goto_split:left
 keybind = ctrl+s>l=goto_split:right
 keybind = shift+enter=text:\n
 
+keybind = ctrl+s>m=toggle_fullscreen
+
 keybind = global:ctrl+`=toggle_quick_terminal

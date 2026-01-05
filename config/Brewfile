@@ -16,7 +16,8 @@ brew "lazygit"
 # Polyglot runtime manager (asdf rust clone)
 brew "mise"
 # Ambitious Vim-fork focused on extensibility and agility
-brew "neovim"
+# brew "neovim"
+brew "bob"
 # Lua related (support neovim plugins)
 brew "lua"
 brew "luarocks"
@@ -91,3 +92,21 @@ cask "steam"
 cask "moonlight"
 # Free messaging and calling application
 cask "wechat"
+
+### Treesitter & Language Server
+brew "tree-sitter-cli"
+brew "bash-language-server"
+brew "llvm" # clangd
+brew "lua-language-server"
+brew "ruby-lsp"
+brew "gopls"
+brew "golangci-lint"
+brew "golangci-lint-langserver"
+brew "templ"
+brew "rust-analyzer"
+brew "zls"
+brew "sql-language-server"
+brew "yaml-language-server"
+brew "typescript-language-server"
+brew "vscode-langservers-extracted"
+brew "docker-language-server"
