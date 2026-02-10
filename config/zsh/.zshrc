@@ -22,6 +22,13 @@ export PATH="$PATH:$HOME/.local/bin"
 
 export EDITOR="vi"
 
+# Include rancher-desktop bin folder (docker, kubectl etc.)
+export PATH="$HOME/.rd/bin:$PATH"
+# Include bob (neovim version manager) bin folder
+export PATH="$PATH:$HOME/.local/share/bob/nvim-bin"
+# Include libpq bin (psql)
+export PATH="/opt/homebrew/opt/libpq/bin:$PATH"
+
 plugins=(
   aws
   gh

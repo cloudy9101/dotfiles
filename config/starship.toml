@@ -28,6 +28,8 @@ symbol = " "
 symbol = " "
 
 [directory]
+truncation_length = 0
+truncate_to_repo = true
 read_only = " 󰌾"
 
 [docker_context]
@@ -181,3 +183,9 @@ symbol = " "
 
 [gradle]
 symbol = " "
+
+[kubernetes]
+disabled = false
+
+[nats]
+disabled = false
