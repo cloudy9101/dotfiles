@@ -1,8 +1,6 @@
 ### TUI
 # GNU Pretty Good Privacy (PGP) package
 brew "gnupg"
-# Command-line fuzzy finder written in Go
-brew "fzf"
 # Search tool like grep and The Silver Searcher
 brew "ripgrep"
 # Resource monitor. C++ version and continuation of bashtop and bpytop
@@ -16,25 +14,16 @@ brew "lazygit"
 # Polyglot runtime manager (asdf rust clone)
 brew "mise"
 # Ambitious Vim-fork focused on extensibility and agility
-# brew "neovim"
-brew "bob"
+brew "neovim"
 # Lua related (support neovim plugins)
 brew "lua"
 brew "luarocks"
-# PDF preview
-brew "ghostscript"
-# LaTeX render
-brew "tectonic"
-# Mermaid CLI / Render
-brew "mermaid-cli"
 # 7-Zip is a file archiver with a high compression ratio
 brew "sevenzip"
 # Cross-shell prompt for astronauts
 brew "starship"
 # Internet file retriever
 brew "wget"
-# Blazing fast terminal file manager written in Rust, based on async I/O
-brew "yazi"
 # Shell extension to navigate your filesystem faster
 brew "zoxide"
 # Simple, fast and user-friendly alternative to find
@@ -43,9 +32,8 @@ brew "fd"
 cask "claude-code"
 # Lazydocker
 brew "lazydocker"
-# k9s
-tap "derailed/k9s"
-brew "k9s"
+# Configurable static site generator
+brew "hugo"
 
 ### GUI
 # Terminal emulator that uses platform-native UI and GPU acceleration
@@ -85,14 +73,6 @@ brew "libyaml"
 cask "font-cascadia-code-nf"
 cask "font-symbols-only-nerd-font"
 
-### GAMES
-# Video game digital distribution service
-cask "steam"
-# GameStream client
-cask "moonlight"
-# Free messaging and calling application
-cask "wechat"
-
 ### Treesitter & Language Server
 brew "tree-sitter-cli"
 brew "bash-language-server"
@@ -110,3 +90,4 @@ brew "yaml-language-server"
 brew "typescript-language-server"
 brew "vscode-langservers-extracted"
 brew "docker-language-server"
+brew "helm-ls"
