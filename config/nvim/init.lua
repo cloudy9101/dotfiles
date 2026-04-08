@@ -1,41 +1,53 @@
 local opt = vim.opt
 
--- show line numbers
-opt.number = true
-opt.relativenumber = true
-opt.signcolumn = 'yes'
-opt.cursorline = true
+-- line numbers
+opt.number = true -- line number
+opt.relativenumber = true -- relative line number
+opt.signcolumn = 'yes' -- always show sign column, avoid layout jump w/o sign column
+opt.cursorline = true -- highlight current line the cursor at
 
--- 1 tab = 2 space
-opt.tabstop = 2
-opt.shiftwidth = 2
+-- indent/tabs
+opt.tabstop = 2 -- tabwidth for displaying
+opt.shiftwidth = 0 -- indent width, set to 0 so it uses tabstop value
+opt.softtabstop = -1 -- 1 tab = 2 columns, set to negative so it use shiftwidth -> tabstop value
+opt.expandtab = true -- replace tab with space in insert mode
+opt.smartindent = true -- smart auto indent
 
--- replace tab with space
-opt.expandtab = true
+-- window deco
+opt.winborder = 'rounded' -- show border for floating window
+opt.pumheight = 10 -- popup menu height
+opt.pumblend = 5 -- popup menu transparency
+opt.winblend = 5 -- popup menu transparency
 
--- smart indent
-opt.autoindent = true
-opt.smartindent = true
+-- window split
+opt.splitbelow = true -- new h split window goes below
+opt.splitright = true -- new v split window goes right
 
--- show border for floating window
-opt.winborder = 'rounded'
-
--- smartcase for searching
-opt.ignorecase = true
-opt.smartcase = true
+-- searching
+opt.ignorecase = true -- case insensitive in search
+opt.smartcase = true -- case sensitive if has uppercase in search pattern
 
 -- list characters
-opt.list = true
-opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
+opt.list = true -- show tabs, trailing spaces, non-breakable space chars
+opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' } -- chars to display
 
 -- Wrap
-opt.breakindent = true
+opt.colorcolumn = '100' -- show a colored column at column 100
+opt.breakindent = true -- wrapped lines keep the same indent
 
 -- Save undo history
 opt.undofile = true
 
+-- Fold
+opt.foldmethod = 'expr' -- use expr below to do fold/unfold
+opt.foldexpr = 'v:lua.vim.treesitter.foldexpr()' -- use treesitter to do fold/unfold
+opt.foldlevel = 999 -- open all fold blocks by default
+
 -- MISC
-opt.showmode = false
+opt.showmode = false -- disable built-in bottom line Insert, Replace, Visual mode display
+opt.showmatch = true -- cursor briefly jump to the matching open bracket after enter a close bracket
+opt.backupcopy = 'yes'
+-- opt.wildmenu = true -- tab completion for cmd line
 
 -- use whitespace as leader key
 vim.g.mapleader = ' '
@@ -48,24 +60,25 @@ vim.pack.add({
 	'https://github.com/neovim/nvim-lspconfig',
 	'https://github.com/nvim-mini/mini.nvim',
 	'https://github.com/stevearc/oil.nvim',
+  'https://github.com/wakatime/vim-wakatime.git',
 })
-require('mini.ai').setup()
-require('mini.pairs').setup()
+require('mini.pairs').setup() -- auto pairs () [] etc.
 require('mini.pick').setup()
 require('mini.extra').setup()
-require('mini.clue').setup()
-require('mini.git').setup()
-require('mini.diff').setup()
-require('mini.indentscope').setup()
+require('mini.clue').setup() -- keymap clues
+require('mini.git').setup() -- Git integration
+require('mini.diff').setup() -- Diff enhancement
+require('mini.indentscope').setup() -- Display indentscope indicator
 require('mini.icons').setup()
 require('mini.statusline').setup()
-require('mini.tabline').setup()
-require('mini.trailspace').setup()
+require('mini.tabline').setup() -- List buffers as a line
+require('mini.trailspace').setup() -- highlight trailing space
 require('oil').setup()
 
 -- colorscheme
 vim.cmd.colorscheme 'tokyonight'
 
+require('filetype')
 require('treesitter')
 require('lsp')
 require('keymap')
