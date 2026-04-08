@@ -34,6 +34,8 @@ cask "claude-code"
 brew "lazydocker"
 # Configurable static site generator
 brew "hugo"
+# Tool for managing OCI containers and pods
+brew "podman"
 
 ### GUI
 # Terminal emulator that uses platform-native UI and GPU acceleration
