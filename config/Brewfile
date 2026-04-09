@@ -1,41 +1,21 @@
 ### TUI
+# Z Shell
+brew "zsh"
 # GNU Pretty Good Privacy (PGP) package
 brew "gnupg"
-# Search tool like grep and The Silver Searcher
-brew "ripgrep"
-# Resource monitor. C++ version and continuation of bashtop and bpytop
-brew "btop"
-# GitHub command-line tool
-brew "gh"
-# Lightweight and flexible command-line JSON processor
-brew "jq"
-# Simple terminal UI for git commands
-brew "lazygit"
 # Polyglot runtime manager (asdf rust clone)
 brew "mise"
-# Ambitious Vim-fork focused on extensibility and agility
-brew "neovim"
 # Lua related (support neovim plugins)
 brew "lua"
 brew "luarocks"
-# 7-Zip is a file archiver with a high compression ratio
-brew "sevenzip"
-# Cross-shell prompt for astronauts
-brew "starship"
 # Internet file retriever
 brew "wget"
-# Shell extension to navigate your filesystem faster
-brew "zoxide"
-# Simple, fast and user-friendly alternative to find
-brew "fd"
-# Terminal-based AI coding assistant
-cask "claude-code"
-# Lazydocker
-brew "lazydocker"
-# Configurable static site generator
-brew "hugo"
 # Tool for managing OCI containers and pods
 brew "podman"
+# Send macOS User Notifications from the command-line
+brew "terminal-notifier"
+# Command-line interface for SQLite
+brew "sqlite"
 
 ### GUI
 # Terminal emulator that uses platform-native UI and GPU acceleration
@@ -56,6 +36,7 @@ brew "cloudflared"
 cask "claude"
 # Kubernetes and container management on the desktop
 cask "rancher"
+brew "tailscale"
 
 ### DEPS
 # GNU multiple precision arithmetic library
@@ -74,22 +55,3 @@ brew "libyaml"
 ### FONTS
 cask "font-cascadia-code-nf"
 cask "font-symbols-only-nerd-font"
-
-### Treesitter & Language Server
-brew "tree-sitter-cli"
-brew "bash-language-server"
-brew "llvm" # clangd
-brew "lua-language-server"
-brew "ruby-lsp"
-brew "gopls"
-brew "golangci-lint"
-brew "golangci-lint-langserver"
-brew "templ"
-brew "rust-analyzer"
-brew "zls"
-brew "sql-language-server"
-brew "yaml-language-server"
-brew "typescript-language-server"
-brew "vscode-langservers-extracted"
-brew "docker-language-server"
-brew "helm-ls"

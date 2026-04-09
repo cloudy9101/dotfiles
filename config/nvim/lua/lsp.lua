@@ -1,44 +1,46 @@
--- lsp list
-vim.lsp.enable({
-  -- C
-  'clangd',
+require("mason").setup()
+require("mason-lspconfig").setup({
+  automatic_enable = true,
+  ensure_installed = {
+    -- C
+    'clangd',
 
-  -- Lua
-  'lua_ls',
+    -- Lua
+    'lua_ls',
 
-  -- Ruby
-  'ruby_lsp',
-  'herb_ls',
-  'turbo_ls',
-  'stimulus_ls',
+    -- Ruby
+    'ruby_lsp',
+    'herb_ls',
+    'stimulus_ls',
 
-  -- Golang
-  'gopls',
-  'templ',
-  'golangci_lint_ls',
+    -- Golang
+    'gopls',
+    'templ',
+    'golangci_lint_ls',
 
-  -- Rust
-  'rust_analyzer',
+    -- Rust
+    'rust_analyzer',
 
-  -- Zig
-  'zls',
+    -- Zig
+    'zls',
 
-  -- Javascript/Typescript
-  'ts_ls',
-  'eslint',
+    -- Javascript/Typescript
+    'ts_ls',
+    'eslint',
 
-  -- HTML/CSS
-  'html',
-  'cssls',
-  'tailwindcss',
+    -- HTML/CSS
+    'html',
+    'cssls',
+    'tailwindcss',
 
-  -- MISC
-  'bashls',
-  'docker_language_server',
-  'jsonls',
-  'sqlls',
-  'yamlls',
-  'helm_ls',
+    -- MISC
+    'bashls',
+    'docker_language_server',
+    'jsonls',
+    'sqlls',
+    'yamlls',
+    'helm_ls',
+  },
 })
 
 -- add vim api support for lua lsp
