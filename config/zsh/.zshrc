@@ -20,6 +20,8 @@ export PATH="$PATH:$aqua_path"
 export AQUA_GLOBAL_CONFIG=$HOME/.config/aqua.yaml
 export PATH="$PATH:$HOME/.local/bin"
 
+export EDITOR="vi"
+
 plugins=(
   aws
   gh
@@ -49,7 +51,7 @@ alias crt='cd $(git rev-parse --show-toplevel)'
 alias lg='lazygit'
 
 nn() {
-  if [[ ! command -v dtach ]]; then
+  if [[ ! $(command -v dtach) ]]; then
     vi "$@"
     return
   fi
