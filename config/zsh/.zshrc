@@ -52,7 +52,7 @@ alias lg='lazygit'
 
 nn() {
   if [[ ! $(command -v dtach) ]]; then
-    vi "$@"
+    nvim "$@"
     return
   fi
 
@@ -60,6 +60,6 @@ nn() {
   if [[ -S "$sock" ]]; then
     dtach -a "$sock"
   else
-    dtach -c "$sock" vi "$@"
+    dtach -c "$sock" nvim "$@"
   fi
 }
