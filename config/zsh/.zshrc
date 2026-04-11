@@ -12,12 +12,13 @@ fi
 if [[ "$OSTYPE" == "darwin"* ]]; then
   # Include rancher-desktop bin folder (include docker, kubectl etc.)
   export PATH="$HOME/.rd/bin:$PATH"
-  # Include binaries installed by bun
-  export PATH="$HOME/.bun/bin:$PATH"
 fi
+# Include binaries installed by bun
+export PATH="$HOME/.bun/bin:$PATH"
 aqua_path=${AQUA_ROOT_DIR:-${XDG_DATA_HOME:-$HOME/.local/share}/aquaproj-aqua}/bin
 export PATH="$PATH:$aqua_path"
 export AQUA_GLOBAL_CONFIG=$HOME/.config/aqua.yaml
+export PATH="$PATH:$HOME/.local/bin"
 
 plugins=(
   aws
@@ -46,3 +47,17 @@ alias vi='nvim'
 alias dot='cd $HOME/Projects/dotfiles'
 alias crt='cd $(git rev-parse --show-toplevel)'
 alias lg='lazygit'
+
+nn() {
+  if [[ ! command -v dtach ]]; then
+    vi "$@"
+    return
+  fi
+
+  local sock="/tmp/nvim-dtach-$(echo $PWD | md5sum | cut -c1-8).sock"
+  if [[ -S "$sock" ]]; then
+    dtach -a "$sock"
+  else
+    dtach -c "$sock" vi "$@"
+  fi
+}
