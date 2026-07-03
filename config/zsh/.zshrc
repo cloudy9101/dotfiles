@@ -9,30 +9,14 @@ elif [[ "$OSTYPE" == "darwin"* ]]; then
   eval "$(/opt/homebrew/bin/brew shellenv)"
 fi
 
-# Path
-# MacOS specific path
-if [[ "$OSTYPE" == "darwin"* ]]; then
-  # Include rancher-desktop bin folder (include docker, kubectl etc.)
-  export PATH="$HOME/.rd/bin:$PATH"
-fi
-# Include binaries installed by bun
-export PATH="$HOME/.bun/bin:$PATH"
-aqua_path=${AQUA_ROOT_DIR:-${XDG_DATA_HOME:-$HOME/.local/share}/aquaproj-aqua}/bin
-export PATH="$PATH:$aqua_path"
-export AQUA_GLOBAL_CONFIG=$HOME/.config/aqua.yaml
-export PATH="$PATH:$HOME/.local/bin"
-
-export EDITOR="vi"
-
-# Include rancher-desktop bin folder (docker, kubectl etc.)
-export PATH="$HOME/.rd/bin:$PATH"
-# Include bob (neovim version manager) bin folder
-export PATH="$PATH:$HOME/.local/share/bob/nvim-bin"
 # Include libpq bin (psql)
-export PATH="/opt/homebrew/opt/libpq/bin:$PATH"
+export PATH="$(brew --prefix)/opt/libpq/bin:$PATH"
 
 # For Lazygit to use config file under $HOME/.config
 export XDG_CONFIG_HOME="$HOME/.config"
+
+# Set neovim as EDITOR
+export EDITOR="nvim"
 
 plugins=(
   aws
