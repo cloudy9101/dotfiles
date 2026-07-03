@@ -11,6 +11,9 @@ detect_os() {
 link_config_files() {
   echo "Link config files/folders"
 
+  echo "export ZDOTDIR=$HOME/.config/zsh" > $HOME/.zshenv
+  mkdir -p $HOME/.config
+
   for f in ghostty mise nvim zsh git starship.toml; do
     if ! test -e $HOME/.config/${f}; then
       ln -s $(pwd)/config/${f} $HOME/.config/${f}
@@ -23,7 +26,7 @@ link_config_files() {
 install_ohmyzsh() {
   echo "Install ohmyzsh"
 
-  if [ -d "$HOME/.oh-my-zsh" ]; then
+  if [ -d "$HOME/.oh-my-zsh" ] || [ -d "$ZDOTDIR/.oh-my-zsh" ]; then
     echo "oh-my-zsh already installed, skipping"
     return
   fi
