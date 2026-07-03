@@ -3,7 +3,7 @@ ZSH_THEME="robbyrussell"
 ZSH_CUSTOM=$ZDOTDIR/ohmyzsh-custom
 
 # Homebrew activate
-if [ "$OSTYPE" = "linux" ] && [ -f "/etc/debian_version" ]; then
+if [[ "$OSTYPE" == "linux"* ]] && [ -f "/etc/debian_version" ]; then
   eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 elif [[ "$OSTYPE" == "darwin"* ]]; then
   eval "$(/opt/homebrew/bin/brew shellenv)"

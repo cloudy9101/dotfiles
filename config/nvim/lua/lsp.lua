@@ -2,9 +2,6 @@ require("mason").setup()
 require("mason-lspconfig").setup({
   automatic_enable = true,
   ensure_installed = {
-    -- C
-    'clangd',
-
     -- Lua
     'lua_ls',
 

@@ -9,3 +9,6 @@
 [rebase]
   autoStash = true
   missingCommitsCheck = true
+[user]
+	email = hirayhao@gmail.com
+	name = Ray Hao
