@@ -2,9 +2,10 @@
 
 . ./helper.sh
 
-install_aqua
+sudo apt-get update
+sudo apt-get install -y build-essential procps curl file git
 
-install_bins
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
 link_config_files
 

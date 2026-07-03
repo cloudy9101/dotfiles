@@ -8,26 +8,10 @@ detect_os() {
   esac
 }
 
-install_aqua() {
-  curl -sSfL -O https://raw.githubusercontent.com/aquaproj/aqua-installer/v4.0.2/aqua-installer
-  echo "98b883756cdd0a6807a8c7623404bfc3bc169275ad9064dc23a6e24ad398f43d  aqua-installer" | sha256sum -c -
-  chmod +x aqua-installer
-  ./aqua-installer
-}
-
-install_bins() {
-  aqua_path=${AQUA_ROOT_DIR:-${XDG_DATA_HOME:-$HOME/.local/share}/aquaproj-aqua}/bin
-  export PATH="$PATH:$aqua_path"
-
-  aqua i -c ./config/aqua.yaml
-}
-
 link_config_files() {
   echo "Link config files/folders"
 
-  echo "export ZDOTDIR=$HOME/.config/zsh" > $HOME/.zshenv
-
-  for f in aqua.yaml ghostty mise nvim zsh git starship.toml; do
+  for f in ghostty mise nvim zsh git starship.toml; do
     if ! test -e $HOME/.config/${f}; then
       ln -s $(pwd)/config/${f} $HOME/.config/${f}
     fi

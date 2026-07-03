@@ -3,7 +3,9 @@ ZSH_THEME="robbyrussell"
 ZSH_CUSTOM=$ZDOTDIR/ohmyzsh-custom
 
 # Homebrew activate
-if [[ "$OSTYPE" == "darwin"* ]]; then
+if [ "$OSTYPE" = "linux" ] && [ -f "/etc/debian_version" ]; then
+  eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+elif [[ "$OSTYPE" == "darwin"* ]]; then
   eval "$(/opt/homebrew/bin/brew shellenv)"
 fi
 
@@ -28,6 +30,9 @@ export PATH="$HOME/.rd/bin:$PATH"
 export PATH="$PATH:$HOME/.local/share/bob/nvim-bin"
 # Include libpq bin (psql)
 export PATH="/opt/homebrew/opt/libpq/bin:$PATH"
+
+# For Lazygit to use config file under $HOME/.config
+export XDG_CONFIG_HOME="$HOME/.config"
 
 plugins=(
   aws
@@ -56,17 +61,5 @@ alias vi='nvim'
 alias dot='cd $HOME/Projects/dotfiles'
 alias crt='cd $(git rev-parse --show-toplevel)'
 alias lg='lazygit'
-
-nn() {
-  if [[ ! $(command -v dtach) ]]; then
-    nvim "$@"
-    return
-  fi
-
-  local sock="/tmp/nvim-dtach-$(echo $PWD | md5sum | cut -c1-8).sock"
-  if [[ -S "$sock" ]]; then
-    dtach -a "$sock"
-  else
-    dtach -c "$sock" nvim "$@"
-  fi
-}
+alias n='new_git_worktree'
+alias zz='zmx-select'

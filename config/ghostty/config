@@ -3,7 +3,7 @@ font-family = Cascadia Code NF
 font-size = 18
 maximize = true
 mouse-hide-while-typing = true
-scrollback-limit = 10000
+scrollback-limit = 100000
 shell-integration = zsh
 
 keybind = ctrl+s>r=reload_config
