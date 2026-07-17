@@ -3,7 +3,29 @@ go = "latest"
 node = "24"
 ruby = "latest"
 rust = "latest"
-bun = "latest"
 zig = "latest"
 
+# LSP
+"npm:vscode-langservers-extracted" = "latest"
+"go:golang.org/x/tools/gopls" = "latest"
+"aqua:golangci-lint" = "latest"
+"go:github.com/a-h/templ/cmd/templ" = "latest"
+"npm:typescript" = "latest"
+"npm:typescript-language-server" = "latest"
+"npm:eslint" = "latest"
+"cargo:stylua" = "latest"
+"aqua:LuaLS/lua-language-server" = "latest"
+"gem:ruby-lsp" = "latest"
+"npm:@herb-tools/language-server" = "latest"
+"npm:stimulus-language-server" = "latest"
+"npm:@tailwindcss/language-server" = "latest"
+"go:github.com/docker/docker-language-server/cmd/docker-language-server" = "latest"
+"npm:@postgres-language-server/cli" = "latest"
+"go:github.com/hashicorp/terraform-ls" = "latest"
+"npm:yaml-language-server" = "latest"
+"zls" = "latest"
+
 watchexec = "latest"
+
+[settings.ruby]
+compile = false

@@ -1,14 +1,24 @@
+[alias]
+	co = checkout
+	br = branch
+	ci = commit
+	st = status
+
 [push]
   autoSetupRemote = true
   default = current
-
 [pull]
   default = current
   rebase = true
-
 [rebase]
   autoStash = true
   missingCommitsCheck = true
+
 [user]
 	email = hirayhao@gmail.com
 	name = Ray Hao
+
+[credential "https://github.com"]
+	helper = !/usr/bin/gh auth git-credential
+[credential "https://gist.github.com"]
+	helper = !/usr/bin/gh auth git-credential
