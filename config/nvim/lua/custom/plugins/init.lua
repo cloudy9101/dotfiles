@@ -14,23 +14,26 @@ end
 
 -- Oil file explorer
 local oil_detail = false
-vim.pack.add { "https://github.com/stevearc/oil.nvim" }
-require("oil").setup({
+vim.pack.add { 'https://github.com/stevearc/oil.nvim' }
+require('oil').setup {
   columns = {
-    "icon",
+    'icon',
   },
   keymaps = {
-    ["gd"] = {
-      desc = "Toggle file detail view",
+    ['gd'] = {
+      desc = 'Toggle file detail view',
       callback = function()
         oil_detail = not oil_detail
         if oil_detail then
-          require("oil").set_columns({"permissions", "size", "mtime", "icon" })
+          require('oil').set_columns { 'permissions', 'size', 'mtime', 'icon' }
         else
-          require("oil").set_columns({ "icon" })
+          require('oil').set_columns { 'icon' }
         end
       end,
     },
   },
-})
-vim.keymap.set("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
+}
+vim.keymap.set('n', '-', '<CMD>Oil<CR>', { desc = 'Open parent directory' })
+
+vim.pack.add { 'https://github.com/zk-org/zk-nvim' }
+require('zk').setup()
