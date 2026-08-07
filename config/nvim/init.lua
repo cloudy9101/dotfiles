@@ -17,6 +17,9 @@ vim.o.number = true -- Show line numbers in a column.
 -- Affects the 'number' option above, see `:h number_relativenumber`.
 vim.o.relativenumber = true
 
+-- Always show signcolumn
+vim.o.signcolumn = 'yes'
+
 -- Sync clipboard between OS and Neovim. Schedule the setting after `UIEnter` because it can
 -- increase startup-time. Remove this option if you want your OS clipboard to remain independent.
 -- See `:h 'clipboard'`
@@ -38,12 +41,19 @@ vim.o.list = true -- Show <tab> and trailing spaces.
 -- instead raise a dialog asking if you wish to save the current file(s). See `:h 'confirm'`
 vim.o.confirm = true
 
+-- Autocomplete
+vim.o.autocomplete = true
+vim.o.completeopt = 'menuone,noselect,popup'
+
 -- KEYMAPS
 --
 -- See `:h vim.keymap.set()`, `:h mapping`, `:h keycodes`
 
 -- Use <Esc> to exit terminal mode
 vim.keymap.set('t', '<Esc>', '<C-\\><C-n>')
+
+-- Reload config
+vim.keymap.set('n', 'rr', ':so $MYVIMRC<CR>')
 
 -- AUTOCOMMANDS (EVENT HANDLERS)
 --
@@ -87,18 +97,28 @@ vim.pack.add({
   'https://github.com/neovim/nvim-lspconfig',
   -- Fuzzy picker
   'https://github.com/ibhagwan/fzf-lua',
-  -- Autocompletion
-  'https://github.com/nvim-mini/mini.completion',
-  -- Enhanced quickfix/loclist
-  'https://github.com/stevearc/quicker.nvim',
-  -- Git integration
-  'https://github.com/lewis6991/gitsigns.nvim',
   -- Zk note taking
   "https://github.com/zk-org/zk-nvim",
 })
 
 require('fzf-lua').setup { fzf_colors = true }
-require('mini.completion').setup {}
-require('quicker').setup {}
-require('gitsigns').setup {}
 require('zk').setup()
+
+vim.lsp.config('lua_ls', {
+	settings = {
+		Lua = {
+			runtime = {
+				version = 'LuaJIT',
+			},
+			workspace = {
+				library = {
+					vim.env.VIMRUNTIME,
+				},
+			},
+		},
+	},
+})
+vim.lsp.enable('lua_ls')
+
+
+require('diffsign').setup()
