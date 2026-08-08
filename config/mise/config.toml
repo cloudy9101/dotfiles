@@ -13,7 +13,6 @@ zig = "latest"
 "npm:typescript" = "latest"
 "npm:typescript-language-server" = "latest"
 "npm:eslint" = "latest"
-"cargo:stylua" = "latest"
 "aqua:LuaLS/lua-language-server" = "latest"
 "gem:ruby-lsp" = "latest"
 "npm:@herb-tools/language-server" = "latest"
@@ -26,6 +25,7 @@ zig = "latest"
 "zls" = "latest"
 
 watchexec = "latest"
+tree-sitter = "latest"
 
 [settings.ruby]
 compile = false

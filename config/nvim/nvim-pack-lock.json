@@ -4,21 +4,21 @@
       "rev": "8671012a7b2a1648595952c655039d51fb301c14",
       "src": "https://github.com/ibhagwan/fzf-lua"
     },
-    "gitsigns.nvim": {
-      "rev": "31d6fb2d618bca1482b9f274751ead5f03461408",
-      "src": "https://github.com/lewis6991/gitsigns.nvim"
-    },
     "mini.completion": {
       "rev": "d2a2b2a2b5350b713ade3bb744df39eee7d4229b",
       "src": "https://github.com/nvim-mini/mini.completion"
     },
+    "mini.diff": {
+      "rev": "626b8a5b93874c4d05ca25aedec56cfff0b378fb",
+      "src": "https://github.com/nvim-mini/mini.diff"
+    },
+    "mini.icons": {
+      "rev": "98faae31e9be1cc054ae63485e58ceb185efcad0",
+      "src": "https://github.com/nvim-mini/mini.icons"
+    },
     "nvim-lspconfig": {
       "rev": "43ed3797b266e1ee8d222e491379ad471c9d3146",
       "src": "https://github.com/neovim/nvim-lspconfig"
-    },
-    "quicker.nvim": {
-      "rev": "4a6883cb13fe097a20a046eb55f6dffd239276e3",
-      "src": "https://github.com/stevearc/quicker.nvim"
     },
     "zk-nvim": {
       "rev": "922134d8f95f0169bb572b09f2fa643573cb51f8",

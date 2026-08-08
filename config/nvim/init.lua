@@ -17,6 +17,9 @@ vim.o.number = true -- Show line numbers in a column.
 -- Affects the 'number' option above, see `:h number_relativenumber`.
 vim.o.relativenumber = true
 
+-- Always show sign column to avoid layout shift
+vim.o.signcolumn = 'yes'
+
 -- Sync clipboard between OS and Neovim. Schedule the setting after `UIEnter` because it can
 -- increase startup-time. Remove this option if you want your OS clipboard to remain independent.
 -- See `:h 'clipboard'`
@@ -31,8 +34,8 @@ vim.o.ignorecase = true
 vim.o.smartcase = true
 
 vim.o.cursorline = true -- Highlight the line where the cursor is on.
-vim.o.scrolloff = 10 -- Keep this many screen lines above/below the cursor.
-vim.o.list = true -- Show <tab> and trailing spaces.
+vim.o.scrolloff = 10    -- Keep this many screen lines above/below the cursor.
+vim.o.list = true       -- Show <tab> and trailing spaces.
 
 -- If performing an operation that would fail due to unsaved changes in the buffer (like `:q`),
 -- instead raise a dialog asking if you wish to save the current file(s). See `:h 'confirm'`
@@ -87,18 +90,23 @@ vim.pack.add({
   'https://github.com/neovim/nvim-lspconfig',
   -- Fuzzy picker
   'https://github.com/ibhagwan/fzf-lua',
+  -- Icons (fzf-lua optional dep)
+  'https://github.com/nvim-mini/mini.icons',
+  -- Diff
+  'https://github.com/nvim-mini/mini.diff',
   -- Autocompletion
   'https://github.com/nvim-mini/mini.completion',
-  -- Enhanced quickfix/loclist
-  'https://github.com/stevearc/quicker.nvim',
-  -- Git integration
-  'https://github.com/lewis6991/gitsigns.nvim',
   -- Zk note taking
   "https://github.com/zk-org/zk-nvim",
 })
 
+-- Setup plugins
 require('fzf-lua').setup { fzf_colors = true }
-require('mini.completion').setup {}
-require('quicker').setup {}
-require('gitsigns').setup {}
+require('mini.icons').setup()
+require('mini.diff').setup()
+require('mini.completion').setup()
 require('zk').setup()
+
+-- Include custom modules
+require('treesitter')
+require('lsp')
