@@ -48,6 +48,9 @@ vim.o.confirm = true
 -- Use <Esc> to exit terminal mode
 vim.keymap.set('t', '<Esc>', '<C-\\><C-n>')
 
+-- Theme
+vim.cmd.colorscheme 'catppuccin'
+
 -- AUTOCOMMANDS (EVENT HANDLERS)
 --
 -- See `:h lua-guide-autocommands`, `:h autocmd`, `:h nvim_create_autocmd()`
@@ -61,21 +64,6 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   end,
 })
 
--- USER COMMANDS: DEFINE CUSTOM COMMANDS
---
--- See `:h nvim_create_user_command()` and `:h user-commands`
-
--- Create a command `:GitBlameLine` that print the git blame for the current line
-vim.api.nvim_create_user_command('GitBlameLine', function()
-  local line_number = vim.fn.line('.') -- Get the current line number. See `:h line()`
-  local filename = vim.api.nvim_buf_get_name(0)
-  print(vim.system({ 'git', 'blame', '-L', line_number .. ',+1', filename }):wait().stdout)
-end, { desc = 'Print the git blame for the current line' })
-
-
--- Theme
-vim.cmd.colorscheme 'catppuccin'
-
 -- PLUGINS
 --
 -- See `:h :packadd`, `:h vim.pack`
@@ -85,28 +73,48 @@ vim.cmd.colorscheme 'catppuccin'
 vim.cmd('packadd! nohlsearch')
 
 -- Install third-party plugins via "vim.pack.add()".
+local gh = function(x) return 'https://github.com/' .. x end
 vim.pack.add({
   -- Quickstart configs for LSP
-  'https://github.com/neovim/nvim-lspconfig',
+  gh 'neovim/nvim-lspconfig',
   -- Fuzzy picker
-  'https://github.com/ibhagwan/fzf-lua',
+  gh 'ibhagwan/fzf-lua',
   -- Icons (fzf-lua optional dep)
-  'https://github.com/nvim-mini/mini.icons',
+  gh 'nvim-mini/mini.icons',
   -- Diff
-  'https://github.com/nvim-mini/mini.diff',
+  gh 'nvim-mini/mini.diff',
+  -- Snippets
+  gh 'rafamadriz/friendly-snippets',
+  gh 'nvim-mini/mini.snippets',
   -- Autocompletion
-  'https://github.com/nvim-mini/mini.completion',
+  gh 'nvim-mini/mini.completion',
   -- Zk note taking
-  "https://github.com/zk-org/zk-nvim",
+  gh "zk-org/zk-nvim",
 })
 
 -- Setup plugins
-require('fzf-lua').setup { fzf_colors = true }
+require('fzf-lua').setup {
+  fzf_colors = true,
+}
+require('fzf-lua').register_ui_select()
 require('mini.icons').setup()
-require('mini.diff').setup()
+require('mini.diff').setup({
+  view = {
+    style = 'sign',
+    signs = { add = '+', change = '~', delete = '-' }
+  }
+})
+local gen_loader = require('mini.snippets').gen_loader
+require('mini.snippets').setup({
+  snippets = {
+    gen_loader.from_file(vim.fs.dirname(vim.env.MYVIMRC) .. '/snippets/global.json'),
+    gen_loader.from_lang(),
+  }
+})
 require('mini.completion').setup()
 require('zk').setup()
 
 -- Include custom modules
 require('treesitter')
 require('lsp')
+require('keymap')
