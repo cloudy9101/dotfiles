@@ -20,3 +20,6 @@ fzf_lsp_keymap('i', 'lsp_implementations', 'LSP Implementations')
 fzf_lsp_keymap('r', 'lsp_references', 'LSP References')
 fzf_lsp_keymap('s', 'diagnostics_document', 'LSP Document Diagnostics')
 fzf_lsp_keymap('S', 'diagnostics_workspace', 'LSP Workspace Diagnostics')
+
+-- Oil
+vim.keymap.set("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })

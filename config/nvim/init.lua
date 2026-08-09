@@ -82,15 +82,21 @@ vim.pack.add({
   gh 'neovim/nvim-lspconfig',
   -- Fuzzy picker
   gh 'ibhagwan/fzf-lua',
+  -- Oil file explorer
+  gh 'stevearc/oil.nvim',
   -- Icons (fzf-lua optional dep)
   gh 'nvim-mini/mini.icons',
   -- Diff
   gh 'nvim-mini/mini.diff',
+  -- Git
+  gh 'nvim-mini/mini-git',
   -- Snippets
   gh 'rafamadriz/friendly-snippets',
   gh 'nvim-mini/mini.snippets',
   -- Autocompletion
   gh 'nvim-mini/mini.completion',
+  -- Statusline
+  gh 'nvim-mini/mini.statusline',
   -- Zk note taking
   gh "zk-org/zk-nvim",
 })
@@ -100,6 +106,12 @@ require('fzf-lua').setup {
   fzf_colors = true,
 }
 require('fzf-lua').register_ui_select()
+require('oil').setup({
+  columns = {
+    'size',
+    'icon',
+  },
+})
 require('mini.icons').setup()
 require('mini.diff').setup({
   view = {
@@ -107,6 +119,7 @@ require('mini.diff').setup({
     signs = { add = '+', change = '~', delete = '-' }
   }
 })
+require('mini.git').setup()
 local gen_loader = require('mini.snippets').gen_loader
 require('mini.snippets').setup({
   snippets = {
@@ -115,6 +128,7 @@ require('mini.snippets').setup({
   }
 })
 require('mini.completion').setup()
+require('mini.statusline').setup()
 require('zk').setup()
 
 -- Include custom modules
