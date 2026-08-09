@@ -1,7 +1,24 @@
 vim.lsp.enable({
+  'bashls',
+  'docker_language_server',
+  'eslint',
+  'cssls',
+  'gopls',
+  'golangci_lint_ls',
+  'herb_ls',
+  'html',
   'jsonls',
   'lua_ls',
-  'gopls',
+  'rubocop',
+  'ruby_lsp',
+  'stimulus_ls',
+  'tailwindcss',
+  'templ',
+  'terraform_lsp',
+  'ts_ls',
+  'postgres_lsp',
+  'yamlls',
+  'zls',
 })
 
 local group = vim.api.nvim_create_augroup('ray.lsp', {})
