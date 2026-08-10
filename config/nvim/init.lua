@@ -132,7 +132,9 @@ require('mini.snippets').setup({
 })
 require('mini.completion').setup()
 require('mini.statusline').setup()
-require('zk').setup()
+require('zk').setup({
+  picker = 'fzf_lua',
+})
 
 -- Include custom modules
 require('treesitter')

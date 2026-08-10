@@ -19,6 +19,8 @@ tree-sitter = "latest"
 "aqua:golangci-lint" = "latest"
 # Lua
 "aqua:LuaLS/lua-language-server" = "latest"
+# Markdown
+marksman = "latest"
 # SQL
 "npm:sql-language-server" = "latest"
 # YAML

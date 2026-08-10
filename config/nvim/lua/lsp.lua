@@ -8,6 +8,7 @@ vim.lsp.enable({
   'html',
   'jsonls',
   'lua_ls',
+  'marksman',
   'yamlls',
   'zls',
 })
