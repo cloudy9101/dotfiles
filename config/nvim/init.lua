@@ -51,9 +51,6 @@ vim.o.exrc = true
 -- Use <Esc> to exit terminal mode
 vim.keymap.set('t', '<Esc>', '<C-\\><C-n>')
 
--- Theme
-vim.cmd.colorscheme 'catppuccin'
-
 -- AUTOCOMMANDS (EVENT HANDLERS)
 --
 -- See `:h lua-guide-autocommands`, `:h autocmd`, `:h nvim_create_autocmd()`
@@ -100,8 +97,13 @@ vim.pack.add({
   -- Statusline
   gh 'nvim-mini/mini.statusline',
   -- Zk note taking
-  gh "zk-org/zk-nvim",
+  gh 'zk-org/zk-nvim',
+  -- Colorscheme
+  gh 'catppuccin/nvim',
 })
+
+-- Colorscheme
+vim.cmd.colorscheme 'catppuccin-macchiato'
 
 -- Setup plugins
 require('nvim-treesitter').setup()
