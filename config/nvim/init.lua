@@ -80,6 +80,8 @@ local gh = function(x) return 'https://github.com/' .. x end
 vim.pack.add({
   -- Quickstart configs for LSP
   gh 'neovim/nvim-lspconfig',
+  -- Treesitter
+  gh 'nvim-treesitter/nvim-treesitter',
   -- Fuzzy picker
   gh 'ibhagwan/fzf-lua',
   -- Oil file explorer
@@ -102,6 +104,7 @@ vim.pack.add({
 })
 
 -- Setup plugins
+require('nvim-treesitter').setup()
 require('fzf-lua').setup {
   fzf_colors = true,
 }

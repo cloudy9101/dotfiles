@@ -2,30 +2,29 @@
 go = "latest"
 node = "24"
 ruby = "latest"
-rust = "latest"
 zig = "latest"
 
+# Treesitter
+tree-sitter = "latest"
+
 # LSP
+# Bash
+"npm:bash-language-server" = "latest"
+# Docker
+"go:github.com/docker/docker-language-server/cmd/docker-language-server" = "latest"
+# HTML/CSS/JSON/ESLint
 "npm:vscode-langservers-extracted" = "latest"
+# Go
 "go:golang.org/x/tools/gopls" = "latest"
 "aqua:golangci-lint" = "latest"
-"go:github.com/a-h/templ/cmd/templ" = "latest"
-"npm:typescript" = "latest"
-"npm:typescript-language-server" = "latest"
-"npm:eslint" = "latest"
+# Lua
 "aqua:LuaLS/lua-language-server" = "latest"
-"gem:ruby-lsp" = "latest"
-"npm:@herb-tools/language-server" = "latest"
-"npm:stimulus-language-server" = "latest"
-"npm:@tailwindcss/language-server" = "latest"
-"go:github.com/docker/docker-language-server/cmd/docker-language-server" = "latest"
-"npm:@postgres-language-server/cli" = "latest"
-"go:github.com/hashicorp/terraform-ls" = "latest"
+# SQL
+"npm:sql-language-server" = "latest"
+# YAML
 "npm:yaml-language-server" = "latest"
+# Zig
 "zls" = "latest"
-
-watchexec = "latest"
-tree-sitter = "latest"
 
 [settings.ruby]
 compile = false

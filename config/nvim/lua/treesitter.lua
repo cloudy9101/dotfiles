@@ -1,17 +1,21 @@
--- Register languages for treesitter
-local filetypes = {
-  bash = { 'sh' },
-  embedded_template = { 'eruby' },
-  javascript = { 'javascriptreact', 'ecma', 'ecmascript', 'jsx', 'js' },
-  json = { 'jsonc' },
-  python = { 'py' },
-  tsx = { 'typescriptreact', 'typescript.tsx' },
-  typescript = { 'ts' },
-}
-
-for lang, ft in pairs(filetypes) do
-  vim.treesitter.language.register(lang, ft)
-end
+require('nvim-treesitter').install({
+  'bash',
+  'css',
+  'embedded_template',
+  'go',
+  'html',
+  'javascript',
+  'json',
+  'python',
+  'ruby',
+  'sql',
+  'templ',
+  'toml',
+  'tsx',
+  'typescript',
+  'yaml',
+  'zig',
+})
 
 -- Start Treesitter if there's a parser
 vim.api.nvim_create_autocmd('FileType', {
