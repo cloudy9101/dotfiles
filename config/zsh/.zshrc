@@ -1,44 +1,15 @@
-export ZSH="$ZDOTDIR/ohmyzsh"
 ZSH_THEME="robbyrussell"
-ZSH_CUSTOM=$ZDOTDIR/ohmyzsh-custom
-
-# Homebrew activate
-if [[ "$OSTYPE" == "linux"* ]] && [ -f "/etc/debian_version" ]; then
-  eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
-elif [[ "$OSTYPE" == "darwin"* ]]; then
-  eval "$(/opt/homebrew/bin/brew shellenv)"
-fi
-
-# Include libpq bin (psql)
-export PATH="$(brew --prefix)/opt/libpq/bin:$PATH"
-
-# For Lazygit to use config file under $HOME/.config
-export XDG_CONFIG_HOME="$HOME/.config"
 
 # Set neovim as EDITOR
 export EDITOR="nvim"
 
-plugins=(
-  aws
-  gh
-  git
-  golang
-  helm
-  kubectl
-  mise
-  nats
-  podman
-  rails
-  ruby
-  ssh
-  ssh-agent
-  starship
-  tldr
-  zoxide
-  zsh-autosuggestions
-)
+if command -v mise &> /dev/null; then
+  eval "$(mise activate zsh)"
+fi
 
-source $ZSH/oh-my-zsh.sh
+if [[ $- == *i* ]] && [[ ${TERM:-} != "dumb" ]] && command -v starship &> /dev/null; then
+  eval "$(starship init zsh)"
+fi
 
 # Alias
 alias vi='nvim'

@@ -22,21 +22,3 @@ link_config_files() {
 
   ln -s $(pwd)/config/git/config $HOME/.config/.gitconfig
 }
-
-install_ohmyzsh() {
-  echo "Install ohmyzsh"
-
-  if [ -d "$HOME/.oh-my-zsh" ] || [ -d "$ZDOTDIR/.oh-my-zsh" ]; then
-    echo "oh-my-zsh already installed, skipping"
-    return
-  fi
-
-  zdotdir=$HOME/.config/zsh
-
-  RUNZSH=no CHSH=no ZDOTDIR=$zdotdir KEEP_ZSHRC=yes \
-    sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-
-  echo "Install ohmyzsh plugins"
-  export ZSH_CUSTOM=$zdotdir/ohmyzsh-custom
-  git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
-}
